@@ -80,6 +80,34 @@ Mặc định chạy ở **chế độ demo**: lời nhắn chỉ lưu trên tr�
 
 ---
 
+## 8. Mini game & Tín hiệu vũ trụ
+
+### This or That
+Câu hỏi, đáp án của HUB và câu bình luận (`hubNote`) nằm trong `CONFIG.thisOrThat` (`assets/js/config.js`). Game không lưu gì, tải lại trang là chơi lại từ đầu.
+
+### Tín hiệu vũ trụ dành cho bạn (tarot)
+- **Dữ liệu 78 lá** nằm riêng ở `assets/js/data/tarot.js` (22 Ẩn chính + 4 bộ × 14 lá). Mỗi lá có từ khoá, thông điệp xuôi/ngược, Tình cảm · Công việc · Lời khuyên.
+- Sửa xong thì kiểm tra bằng lệnh `node scripts/check-tarot.mjs`. Lệnh này báo nếu thiếu lá, trùng `id` hoặc thiếu trường.
+- Xem trước cả 78 mặt bài: chạy server (mục 1) rồi mở `/scripts/tarot-preview.html`.
+- **Tỉ lệ lá ngược:** `CONFIG.oracle.reversedChance` (mặc định `0.3`, tức 30%).
+- Mỗi lượt ghé trang chỉ rút được **1 lá**. Lá đó được giữ trong bộ nhớ của tab, không dùng `localStorage`/`sessionStorage`, nên F5 là rút lá mới.
+
+#### Thay mặt bài bằng bộ Rider–Waite–Smith bản gốc (1909)
+Mặc định trang tự vẽ mặt bài bằng SVG. Nếu trong `assets/images/tarot/` có file `<id>.webp` thì trang dùng ảnh đó thay cho bản vẽ.
+
+1. Tải bộ ảnh **Rider–Waite–Smith bản 1909** (tranh của Pamela Colman Smith, đã thuộc **phạm vi công cộng**), ví dụ từ Wikimedia Commons, mục *“Rider-Waite tarot deck (Roses & Lilies)”*. Chỉ dùng bản scan gốc 1909, **không** dùng các bản phục chế hoặc tô màu lại sau này: những bản đó có thể còn bản quyền.
+2. Cắt và resize về khoảng **400×680 px** (tỉ lệ 200:340), nén **WebP** chất lượng khoảng 80.
+3. Đặt tên đúng theo `id` của lá rồi bỏ vào `assets/images/tarot/`. Ví dụ: `the-fool.webp`, `the-magician.webp`, `wheel-of-fortune.webp`, `ace-of-wands.webp`, `ten-of-cups.webp`, `page-of-swords.webp`, `king-of-pentacles.webp`.
+
+Quy ước `id`:
+
+| Nhóm | Mẫu tên file |
+|---|---|
+| Ẩn chính | `the-fool`, `the-magician`, `the-high-priestess`, `the-empress`, `the-emperor`, `the-hierophant`, `the-lovers`, `the-chariot`, `strength`, `the-hermit`, `wheel-of-fortune`, `justice`, `the-hanged-man`, `death`, `temperance`, `the-devil`, `the-tower`, `the-star`, `the-moon`, `the-sun`, `judgement`, `the-world` |
+| Ẩn phụ | `<số>-of-<bộ>`: số = `ace`, `two` … `ten`, `page`, `knight`, `queen`, `king` · bộ = `wands` (Gậy), `cups` (Cốc), `swords` (Kiếm), `pentacles` (Tiền) |
+
+Có thể thay từng lá một; lá nào chưa có ảnh thì vẫn dùng bản vẽ SVG. Riêng lá chưa có ảnh, khi được rút trúng, DevTools sẽ báo một dòng 404. Đây là bình thường.
+
 ## ✅ Danh sách TODO cho chủ site
 
 | # | Việc cần làm | Ở đâu |
@@ -99,6 +127,8 @@ Mặc định chạy ở **chế độ demo**: lời nhắn chỉ lưu trên tr�
 | 13 | Thêm 2–4 bài nhạc nền royalty-free | `assets/music/` + `CONFIG.music.playlist` |
 | 14 | Kết nối Supabase cho sổ lưu bút | `CONFIG.guestbook.supabaseUrl/supabaseKey` — xem SETUP-GUESTBOOK.md |
 | 15 | (Tuỳ chọn) Bật workflow keepalive Supabase | repository secrets — xem SETUP-GUESTBOOK.md |
+| 16 | Sửa các câu `hubNote` và câu chốt của This or That cho đúng giọng HUB | `CONFIG.thisOrThat` |
+| 17 | (Tuỳ chọn) Thay mặt bài tarot bằng ảnh Rider–Waite–Smith 1909 | `assets/images/tarot/<id>.webp` — xem mục 8 |
 
 ---
 
@@ -110,9 +140,11 @@ assets/
   css/        tokens.css (màu, font, motion) · base.css · components.css · sections/*.css
   js/
     config.js         ← NỘI DUNG Ở ĐÂY
+    data/tarot.js     ← 78 lá tarot
     main.js           ← ghép các module
     modules/          render, preloader, nav, sky, hero, motion, gallery, favorites,
-                      services, guestbook(-service), music-player, fx, toast, icons, utils
+                      services, guestbook(-service), music-player, fx, toast, icons, utils,
+                      this-or-that, oracle, tarot-art
   images/  music/  icons/
 supabase/schema.sql
 .github/workflows/supabase-keepalive.yml

@@ -1,0 +1,4 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>Xem trước 78 lá tarot</title><meta name="robots" content="noindex"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500&family=Cormorant+Garamond:wght@600&display=swap">
+<style>body{margin:0;background:#0B1020;display:grid;grid-template-columns:repeat(13,1fr);gap:6px;padding:8px;width:1820px}svg{width:100%;height:auto;display:block}</style></head><body>
+<script type="module">import { TAROT } from '../assets/js/data/tarot.js'; import { cardFaceSVG, cardBackSVG } from '../assets/js/modules/tarot-art.js';
+document.body.innerHTML = cardBackSVG() + TAROT.map(cardFaceSVG).join(''); document.body.dataset.ready = 1;</script></body></html>

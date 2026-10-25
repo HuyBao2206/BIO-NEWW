@@ -56,6 +56,7 @@
   <link rel="stylesheet" href="assets/css/sections/guestbook.css">
   <link rel="stylesheet" href="assets/css/sections/player.css">
   <link rel="stylesheet" href="assets/css/sections/this-or-that.css">
+  <link rel="stylesheet" href="assets/css/sections/oracle.css">
 
   <link rel="modulepreload" href="assets/js/main.js">
   <link rel="modulepreload" href="assets/js/config.js">
@@ -108,9 +109,8 @@
       <ul class="dock__list" id="nav-list">
         <li><a href="#gioi-thieu" data-nav="gioi-thieu">Giới thiệu</a></li>
         <li><a href="#yeu-thich" data-nav="yeu-thich">Yêu thích</a></li>
-        <li><a href="#this-or-that" data-nav="this-or-that">This or That</a></li>
-        <li><a href="#thuyen-rong" data-nav="thuyen-rong">Thuyền Rồng</a></li>
-        <li><a href="#order" data-nav="order">Order</a></li>
+        <li><a href="#tin-hieu" data-nav="tin-hieu">Tín hiệu</a></li>
+        <li><a href="#chuong-2" data-nav="dich-vu">Dịch vụ</a></li>
         <li><a href="#luu-but" data-nav="luu-but">Lưu bút</a></li>
       </ul>
     </nav>
@@ -124,10 +124,9 @@
       <ol class="menu-overlay__list">
         <li><a href="#gioi-thieu"><small>01</small>Giới thiệu</a></li>
         <li><a href="#yeu-thich"><small>02</small>Yêu thích</a></li>
-        <li><a href="#this-or-that"><small>03</small>This or That</a></li>
-        <li><a href="#thuyen-rong"><small>04</small>Thuyền Rồng</a></li>
-        <li><a href="#order"><small>05</small>Order</a></li>
-        <li><a href="#luu-but"><small>06</small>Lưu bút</a></li>
+        <li><a href="#tin-hieu"><small>03</small>Tín hiệu</a></li>
+        <li><a href="#chuong-2"><small>04</small>Dịch vụ</a></li>
+        <li><a href="#luu-but"><small>05</small>Lưu bút</a></li>
       </ol>
     </nav>
     <p class="menu-overlay__foot">Bảo Huy · HUB · <span class="font-script">moonlit journey</span></p>
@@ -211,7 +210,7 @@
     </section>
 
     <!-- ============ THIS OR THAT ============ -->
-    <section class="tot section" id="this-or-that" data-nav="this-or-that" aria-labelledby="tot-title">
+    <section class="tot section" id="this-or-that" data-nav="yeu-thich" aria-labelledby="tot-title">
       <div class="container">
         <header class="section-head tot__head">
           <p class="eyebrow">Mini game</p>
@@ -224,8 +223,23 @@
       </div>
     </section>
 
+    <!-- ============ TÍN HIỆU VŨ TRỤ (tarot) ============ -->
+    <section class="oracle-sec section" id="tin-hieu" data-nav="tin-hieu" aria-labelledby="oracle-title">
+      <div class="container">
+        <header class="section-head oracle__head">
+          <p class="eyebrow">Tarot · Chiêm nghiệm</p>
+          <h2 class="section-title" id="oracle-title">Tín hiệu vũ trụ <em>dành cho bạn</em></h2>
+          <p class="oracle__sub font-script">Hít một hơi thật sâu, nghĩ về điều bạn đang mong… rồi nhận một lá nhé</p>
+        </header>
+        <div class="oracle" id="oracle">
+          <noscript><p class="lead">Bật JavaScript để nhận tín hiệu từ vũ trụ nhé.</p></noscript>
+        </div>
+        <p class="oracle__disclaimer">Chỉ mang tính giải trí và chiêm nghiệm 🌙</p>
+      </div>
+    </section>
+
     <!-- ============ CHƯƠNG 2 — chuyển cảnh ============ -->
-    <section class="chapter" id="chuong-2" data-nav="thuyen-rong" aria-labelledby="chapter-text">
+    <section class="chapter" id="chuong-2" data-nav="dich-vu" aria-labelledby="chapter-text">
       <div class="chapter__sticky">
         <div class="chapter__sky chapter__sky--night" aria-hidden="true"></div>
         <div class="chapter__sky chapter__sky--dusk" aria-hidden="true"></div>
@@ -251,7 +265,7 @@
     </section>
 
     <!-- ============ THUYỀN RỒNG ============ -->
-    <section class="boat section" id="thuyen-rong" data-nav="thuyen-rong" aria-labelledby="boat-title">
+    <section class="boat section" id="thuyen-rong" data-nav="dich-vu" aria-labelledby="boat-title">
       <div class="container">
         <div class="boat__hero">
           <div class="boat__copy">
@@ -268,7 +282,7 @@
     </section>
 
     <!-- ============ ORDER ============ -->
-    <section class="order section" id="order" data-nav="order" aria-labelledby="order-title">
+    <section class="order section" id="order" data-nav="dich-vu" aria-labelledby="order-title">
       <div class="container">
         <header class="section-head section-head--wide">
           <p class="eyebrow eyebrow--order">Dịch vụ · Mua hộ</p>

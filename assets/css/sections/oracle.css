@@ -1,0 +1,66 @@
+/* ================= TÍN HIỆU VŨ TRỤ (Tarot) ================= */
+.oracle-sec { padding-block: clamp(4.5rem, 3rem + 4vw, 7rem); background: radial-gradient(760px 520px at 50% 45%, rgba(107, 78, 155, .16), transparent 65%); }
+.oracle__head { margin-inline: auto; margin-bottom: clamp(1.5rem, 1rem + 2vw, 2.5rem); text-align: center; }
+.oracle__head .eyebrow { justify-content: center; }
+.oracle__sub { max-width: 40ch; margin: .6rem auto 0; text-wrap: balance; font-size: clamp(1.3rem, 1.1rem + .8vw, 1.75rem); color: var(--gold-soft); }
+
+.oracle { --cw: clamp(180px, 12vw + 40px, 220px); position: relative; display: grid; justify-items: center; gap: 1.75rem; }
+.oracle__stage { position: relative; display: grid; justify-items: center; align-items: center; gap: 2rem; width: 100%; max-width: 1080px; }
+.oracle__table { position: relative; width: var(--cw); aspect-ratio: 200 / 340; will-change: transform; }
+
+/* Xấp bài úp — "thở" và lấp lánh khi chờ */
+.oracle__deck { position: absolute; inset: 0; animation: deck-breathe 4.2s ease-in-out infinite; }
+.oracle__deck.is-paused, .oracle__deck.is-paused::after { animation-play-state: paused; }
+.oracle__deck::before { content: ""; position: absolute; inset: -18%; border-radius: 50%; background: radial-gradient(circle, rgba(243, 221, 171, .2), transparent 62%); z-index: -1; animation: deck-glow 4.2s ease-in-out infinite; }
+.deck-card { position: absolute; inset: 0; will-change: transform; border-radius: 6.5% / 3.8%; box-shadow: 0 18px 40px -18px rgba(0, 0, 0, .8); overflow: hidden; }
+.deck-card svg { width: 100%; height: 100%; }
+.deck-card:last-child::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 35%, rgba(255, 246, 221, .22) 50%, transparent 65%); transform: translateX(-120%); animation: deck-shimmer 5.5s ease-in-out infinite 1.2s; }
+@keyframes deck-breathe { 50% { transform: translateY(-5px) scale(1.012); } }
+@keyframes deck-glow { 50% { opacity: .55; transform: scale(.94); } }
+@keyframes deck-shimmer { 0%, 55% { transform: translateX(-120%); } 85%, 100% { transform: translateX(120%); } }
+
+/* Lá được rút — lật 3D */
+.oracle__drawn { position: absolute; inset: 0; z-index: 2; perspective: 1400px; }
+.flip, .flip__inner { position: absolute; inset: 0; }
+.flip__inner { transform-style: preserve-3d; transition: transform .9s cubic-bezier(0.3, 0.7, 0.2, 1); }
+.flip__inner.is-flipped { transform: rotateY(180deg); }
+.flip__face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 6.5% / 3.8%; overflow: hidden; box-shadow: 0 24px 60px -20px rgba(0, 0, 0, .85), 0 0 50px -10px rgba(232, 194, 122, .35); }
+.flip__face svg, .flip__face img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.flip__front { transform: rotateY(180deg); }
+.flip__front.is-reversed > * { transform: rotate(180deg); }
+.oracle__sparks { position: absolute; left: -40%; top: -25%; width: 180%; height: 150%; pointer-events: none; z-index: 3; }
+
+/* Bảng nội dung */
+.oracle__panel { position: relative; width: 100%; max-width: 560px; padding: clamp(1.25rem, 1rem + 1.5vw, 2rem); text-align: left;
+  /* nền đặc thay cho backdrop-filter: bảng trượt vào mượt 60fps */
+  background: linear-gradient(170deg, rgba(30, 40, 76, .96), rgba(14, 20, 42, .97)); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.oracle__close { position: absolute; top: .8rem; right: .8rem; }
+.oracle__kicker { display: flex; align-items: center; gap: .6rem; color: var(--silver); font-size: var(--fs-xs); letter-spacing: .18em; text-transform: uppercase; }
+.oracle__badge { padding: .2rem .7rem; border-radius: var(--r-pill); font-size: var(--fs-xs); font-weight: 600; letter-spacing: .06em; text-transform: none; }
+.oracle__badge.is-upright { color: #1A1407; background: linear-gradient(135deg, var(--gold-soft), var(--gold)); }
+.oracle__badge.is-reversed { color: #F3ECFF; background: linear-gradient(135deg, var(--hue-purple-soft), var(--hue-purple)); }
+.oracle__name { margin-top: .6rem; padding-right: 3rem; font-size: var(--fs-2xl); color: var(--pearl); outline: none; }
+.oracle__name-vi { margin-top: .1rem; font-family: var(--font-display); font-style: italic; font-size: var(--fs-lg); color: var(--gold-soft); }
+.oracle__chips { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
+.oracle__chips li { padding: .3rem .75rem; border-radius: var(--r-pill); font-size: var(--fs-xs); color: var(--pearl); background: rgba(232, 194, 122, .08); border: 1px solid rgba(232, 194, 122, .3); }
+.oracle__message { margin-top: 1rem; color: var(--pearl); line-height: 1.75; }
+.oracle__tabs { display: flex; gap: 4px; margin-top: 1.25rem; padding: 4px; border-radius: var(--r-pill); background: rgba(8, 12, 25, .45); border: 1px solid var(--glass-line); width: max-content; max-width: 100%; }
+.oracle__tabs button { min-height: 40px; padding: .45rem 1rem; border-radius: var(--r-pill); font-size: var(--fs-sm); color: var(--silver); transition: background-color .3s, color .3s; }
+.oracle__tabs button[aria-selected="true"] { color: #1A1407; background: linear-gradient(135deg, var(--gold-soft), var(--gold)); }
+.oracle__tabpanel { margin-top: .9rem; min-height: 3.4em; color: var(--silver); font-size: var(--fs-sm); line-height: 1.75; }
+
+.oracle__actions { display: grid; justify-items: center; gap: .7rem; text-align: center; }
+.oracle__hint { color: var(--silver); font-size: var(--fs-sm); }
+.oracle__disclaimer { margin-top: 2rem; text-align: center; color: var(--silver-dim); font-size: var(--fs-xs); }
+
+/* Đã mở: desktop lá trái · bảng phải — mobile lá nhỏ ở trên, bảng bên dưới */
+.oracle__stage.is-open .oracle__table { --cw: clamp(150px, 42vw, 200px); }
+@media (min-width: 900px) {
+  .oracle__stage.is-open { grid-template-columns: auto minmax(0, 560px); justify-content: center; gap: clamp(2rem, 4vw, 4rem); }
+  .oracle__stage.is-open .oracle__table { --cw: clamp(220px, 22vw, 280px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oracle__deck, .oracle__deck::before, .deck-card::after { animation: none !important; }
+  .flip__inner { transition: none; }
+}

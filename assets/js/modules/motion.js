@@ -76,6 +76,7 @@ export function initScrollMotion({ gsap, ScrollTrigger, SplitText }) {
   fadeUp('.gallery__note', '.gallery__note');
 
   fadeUp('#tot-game', '#tot-game');
+  fadeUp('#oracle', '#oracle');
 
   if (reduced) {
     // Màn chuyển chương: chỉ fade nhẹ

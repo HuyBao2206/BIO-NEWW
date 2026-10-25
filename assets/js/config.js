@@ -113,6 +113,13 @@ export const CONFIG = {
     autoNextMs: 2500,
   },
 
+  // ——— "Tín hiệu vũ trụ dành cho bạn" (tarot) ———
+  // Dữ liệu 78 lá nằm riêng ở assets/js/data/tarot.js.
+  oracle: {
+    reversedChance: 0.3,                 // xác suất rút được lá ngược (0 → 1)
+    imageDir: "assets/images/tarot/",    // có <id>.webp ở đây thì dùng ảnh, không thì dùng bản vẽ SVG
+  },
+
   services: {
     dragonBoat: {
       title: "Thuyền Rồng Sông Hương",
