@@ -1,19 +1,14 @@
-/* ================= GALLERY (bento) ================= */
-.bento { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: clamp(150px, 38vw, 220px); grid-auto-flow: dense; gap: clamp(10px, 1.2vw, 18px); }
-.bento__item { position: relative; border-radius: var(--r-lg); overflow: hidden; background: var(--night-600); isolation: isolate; }
-.bento__item:nth-child(6n + 1) { grid-row: span 2; }
-.bento__item:nth-child(6n + 4) { grid-column: span 2; }
-@media (min-width: 900px) {
-  .bento { grid-template-columns: repeat(4, 1fr); grid-auto-rows: clamp(180px, 16vw, 260px); }
-  .bento__item:nth-child(6n + 1) { grid-column: span 2; grid-row: span 2; }
-  .bento__item:nth-child(6n + 4) { grid-column: span 2; grid-row: span 1; }
-  .bento__item:nth-child(6n + 5) { grid-row: span 2; }
-  /* ảnh cuối lấp kín hàng (vd 10 ảnh) */
-  .bento__item:last-child:nth-child(6n + 4) { grid-column: span 3; }
-}
+/* ================= GALLERY (masonry) =================
+ * Mỗi ảnh giữ đúng tỉ lệ thật (aspect-ratio lấy từ width/height trong config) → không cắt người trong ảnh.
+ * Placeholder (khi chưa có ảnh) dùng tỉ lệ 3:4 mặc định. */
+.bento { columns: 2; column-gap: clamp(10px, 1.4vw, 20px); }
+@media (min-width: 900px) { .bento { columns: 3; } }
+.bento__item { position: relative; break-inside: avoid; margin: 0 0 clamp(10px, 1.4vw, 20px); aspect-ratio: 3 / 4; border-radius: var(--r-lg); overflow: hidden; background: var(--night-600); isolation: isolate; box-shadow: var(--shadow-1); }
+.bento__item.is-empty:nth-child(3n + 2) { aspect-ratio: 4 / 5; }
+.bento__item.is-empty:nth-child(3n) { aspect-ratio: 2 / 3; }
 .bento__btn { position: absolute; inset: 0; width: 100%; height: 100%; display: block; border-radius: inherit; overflow: hidden; }
-.bento__btn img { position: absolute; inset: -8% 0; width: 100%; height: 116%; object-fit: cover; transition: transform 1.2s var(--ease-out); will-change: transform; }
-.bento__btn:hover img { transform: scale(1.05); }
+.bento__btn img { position: absolute; inset: -3% 0; width: 100%; height: 106%; object-fit: cover; transition: transform 1.2s var(--ease-out), filter .6s; will-change: transform; }
+.bento__btn:hover img { filter: brightness(1.06) saturate(1.05); }
 .bento__cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 2rem 1rem .9rem; text-align: left; font-size: var(--fs-sm); color: var(--pearl); background: linear-gradient(transparent, rgba(8, 12, 25, .85)); opacity: 0; transform: translateY(8px); transition: opacity .5s var(--ease-out), transform .5s var(--ease-out); }
 .bento__btn:hover .bento__cap, .bento__btn:focus-visible .bento__cap { opacity: 1; transform: none; }
 @media (hover: none) { .bento__cap { opacity: 1; transform: none; } }

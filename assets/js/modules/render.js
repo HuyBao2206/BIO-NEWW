@@ -78,7 +78,7 @@ function renderGallery(cfg) {
     const img = h('img', { src: it.src, alt: it.alt || `Ảnh ${i + 1}`, loading: 'lazy', decoding: 'async', width: it.width || 1200, height: it.height || 1500 });
     const btn = h('button', { class: 'bento__btn', type: 'button', 'data-index': i, 'aria-label': `Xem ảnh lớn: ${it.alt || `ảnh ${i + 1}`}` },
       img, it.caption ? h('span', { class: 'bento__cap', text: it.caption }) : null);
-    return h('figure', { class: 'bento__item' }, btn);
+    return h('figure', { class: 'bento__item', style: { aspectRatio: `${it.width || 3} / ${it.height || 4}` } }, btn);
   }));
 }
 

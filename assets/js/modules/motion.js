@@ -168,7 +168,7 @@ function initGallery(gsap) {
       scrollTrigger: { trigger: item, start: 'top 90%', once: true },
     });
     const img = $('img', item);
-    if (img) gsap.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: item, start: 'top bottom', end: 'bottom top', scrub: true } });
+    if (img) gsap.fromTo(img, { yPercent: -2.5 }, { yPercent: 2.5, ease: 'none', scrollTrigger: { trigger: item, start: 'top bottom', end: 'bottom top', scrub: true } });
   });
 }
 

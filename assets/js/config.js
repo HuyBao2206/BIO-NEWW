@@ -34,9 +34,10 @@ export const CONFIG = {
     { id: "tiktok",   label: "TikTok",   url: "https://www.tiktok.com/@hubmanifest" },
   ],
 
-  // Ảnh cá nhân cho mục "Khoảnh khắc". Ảnh gốc ở assets/images/photos/1.jpg…10.jpg,
+  // Ảnh cá nhân cho mục "Khoảnh khắc". Ảnh gốc ở assets/images/photos/1.jpg…6.jpg,
   // bản nén WebP (cạnh dài ≤ 1600px) ở assets/images/photos/web/ — trang dùng bản nén cho nhẹ.
   // alt: mô tả ảnh (cho người dùng trình đọc màn hình) · caption: chú thích hiện khi hover/xem lớn.
+  // width/height = kích thước thật của ảnh → khung giữ đúng tỉ lệ, không cắt người trong ảnh.
   gallery: [
     { src: "assets/images/photos/web/1.webp", alt: "Khoảnh khắc 1", caption: "", width: 1200, height: 1600 },
     { src: "assets/images/photos/web/2.webp", alt: "Khoảnh khắc 2", caption: "", width: 1200, height: 1600 },
@@ -44,10 +45,6 @@ export const CONFIG = {
     { src: "assets/images/photos/web/4.webp", alt: "Khoảnh khắc 4", caption: "", width: 1178, height: 1600 },
     { src: "assets/images/photos/web/5.webp", alt: "Khoảnh khắc 5", caption: "", width: 900, height: 1600 },
     { src: "assets/images/photos/web/6.webp", alt: "Khoảnh khắc 6", caption: "", width: 1200, height: 1600 },
-    { src: "assets/images/photos/web/7.webp", alt: "Khoảnh khắc 7", caption: "", width: 1024, height: 1536 },
-    { src: "assets/images/photos/web/8.webp", alt: "Khoảnh khắc 8", caption: "", width: 1200, height: 1600 },
-    { src: "assets/images/photos/web/9.webp", alt: "Khoảnh khắc 9", caption: "", width: 1200, height: 1600 },
-    { src: "assets/images/photos/web/10.webp", alt: "Khoảnh khắc 10", caption: "", width: 1200, height: 1600 },
   ],
 
   favorites: {
