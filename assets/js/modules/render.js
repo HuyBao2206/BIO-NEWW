@@ -72,7 +72,6 @@ function renderGallery(cfg) {
       for (const [k, v] of Object.entries(hues(l))) ph.style.setProperty(k, v);
       return h('figure', { class: 'bento__item is-empty', 'aria-hidden': 'true' }, ph);
     }));
-    grid.after(h('p', { class: 'gallery__note', text: 'Ảnh sẽ sớm được cập nhật — hẹn bạn ở những khoảnh khắc tiếp theo.' }));
     return;
   }
   grid.replaceChildren(...items.map((it, i) => {
