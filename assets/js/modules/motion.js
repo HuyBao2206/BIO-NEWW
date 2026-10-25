@@ -58,8 +58,9 @@ export function initScrollMotion({ gsap, ScrollTrigger, SplitText }) {
   const fadeUp = (targets, trigger, opts = {}) => {
     const els = typeof targets === 'string' ? $$(targets) : targets;
     if (!els.length) return;
-    gsap.from(els, {
-      autoAlpha: 0, y: reduced ? 0 : 36, duration: reduced ? 0.6 : 1, ease: reduced ? 'power1.out' : EASE, stagger: 0.08, ...opts,
+    // fromTo (không dùng from) để trạng thái cuối luôn là hiện rõ, kể cả khi phần tử bị ẩn tạm lúc khởi tạo
+    gsap.fromTo(els, { autoAlpha: 0, y: reduced ? 0 : 36 }, {
+      autoAlpha: 1, y: 0, duration: reduced ? 0.6 : 1, ease: reduced ? 'power1.out' : EASE, stagger: 0.08, ...opts,
       scrollTrigger: { trigger: trigger || els[0], start: 'top 86%', once: true },
     });
   };
@@ -74,13 +75,20 @@ export function initScrollMotion({ gsap, ScrollTrigger, SplitText }) {
   fadeUp('.gb-form', '.gb');
   fadeUp('.gallery__note', '.gallery__note');
 
-  if (reduced) return; // phần còn lại là chuyển động/parallax
+  fadeUp('#tot-game', '#tot-game');
+
+  if (reduced) {
+    // Màn chuyển chương: chỉ fade nhẹ
+    gsap.from('.chapter__copy', { autoAlpha: 0, duration: 0.8, ease: 'power1.out', scrollTrigger: { trigger: '.chapter', start: 'top 70%', once: true } });
+    return; // phần còn lại là chuyển động/parallax
+  }
 
   initJourney(gsap, ScrollTrigger);
   initQuote(gsap, SplitText);
   initGallery(gsap);
   initBoat(gsap);
   initOrderTimeline(gsap);
+  initChapter(gsap, SplitText);
 
   /* Hero mờ dần khi cuộn qua */
   gsap.to('.hero__inner', { yPercent: -12, autoAlpha: 0.2, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
@@ -194,4 +202,22 @@ function initOrderTimeline(gsap) {
     tl.from(s, { autoAlpha: 0, y: 24, scale: 0.92, ease: 'back.out(1.8)', duration: 0.6 }, i * 0.9);
     tl.from($('.step__dot', s), { scale: 0, ease: 'back.out(3)', duration: 0.5 }, i * 0.9);
   });
+}
+
+/* ——— Chương 2: đêm → hoàng hôn tím Huế, đèn lồng lần lượt sáng (scrub theo scroll) ——— */
+function initChapter(gsap, SplitText) {
+  const sec = $('#chuong-2');
+  if (!sec) return;
+  const text = $('#chapter-text', sec);
+  text.textContent = nfc(text.textContent);
+  const words = SplitText ? SplitText.create(text, { type: 'words', wordsClass: 'word', aria: 'auto' }).words : [text];
+  const glows = $$('.lt-glow', sec);
+  const tl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: sec, start: 'top top', end: 'bottom bottom', scrub: 0.6 } });
+  tl.fromTo('.chapter__sky--dusk', { opacity: 0 }, { opacity: 1, duration: 4 }, 0)
+    .fromTo('.chapter__sun', { opacity: 0, yPercent: 35, scale: 0.8 }, { opacity: 1, yPercent: 0, scale: 1, duration: 4 }, 0.5)
+    .fromTo('.chapter__hills', { yPercent: 18 }, { yPercent: 0, duration: 4 }, 0)
+    .fromTo(glows, { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.9, stagger: { each: 0.45, from: 'random' }, ease: 'power2.out' }, 1.2)
+    .fromTo('.chapter__label', { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 1.6)
+    .fromTo(words, { opacity: 0.08, y: 14 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.12, ease: 'power2.out' }, 1.9)
+    .to({}, { duration: 1 });
 }

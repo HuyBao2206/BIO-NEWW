@@ -55,6 +55,7 @@
   <link rel="stylesheet" href="assets/css/sections/services.css">
   <link rel="stylesheet" href="assets/css/sections/guestbook.css">
   <link rel="stylesheet" href="assets/css/sections/player.css">
+  <link rel="stylesheet" href="assets/css/sections/this-or-that.css">
 
   <link rel="modulepreload" href="assets/js/main.js">
   <link rel="modulepreload" href="assets/js/config.js">
@@ -107,6 +108,7 @@
       <ul class="dock__list" id="nav-list">
         <li><a href="#gioi-thieu" data-nav="gioi-thieu">Giới thiệu</a></li>
         <li><a href="#yeu-thich" data-nav="yeu-thich">Yêu thích</a></li>
+        <li><a href="#this-or-that" data-nav="this-or-that">This or That</a></li>
         <li><a href="#thuyen-rong" data-nav="thuyen-rong">Thuyền Rồng</a></li>
         <li><a href="#order" data-nav="order">Order</a></li>
         <li><a href="#luu-but" data-nav="luu-but">Lưu bút</a></li>
@@ -122,9 +124,10 @@
       <ol class="menu-overlay__list">
         <li><a href="#gioi-thieu"><small>01</small>Giới thiệu</a></li>
         <li><a href="#yeu-thich"><small>02</small>Yêu thích</a></li>
-        <li><a href="#thuyen-rong"><small>03</small>Thuyền Rồng</a></li>
-        <li><a href="#order"><small>04</small>Order</a></li>
-        <li><a href="#luu-but"><small>05</small>Lưu bút</a></li>
+        <li><a href="#this-or-that"><small>03</small>This or That</a></li>
+        <li><a href="#thuyen-rong"><small>04</small>Thuyền Rồng</a></li>
+        <li><a href="#order"><small>05</small>Order</a></li>
+        <li><a href="#luu-but"><small>06</small>Lưu bút</a></li>
       </ol>
     </nav>
     <p class="menu-overlay__foot">Bảo Huy · HUB · <span class="font-script">moonlit journey</span></p>
@@ -204,6 +207,46 @@
           <span class="tabs__indicator" aria-hidden="true"></span>
         </div>
         <div id="fav-panels"></div>
+      </div>
+    </section>
+
+    <!-- ============ THIS OR THAT ============ -->
+    <section class="tot section" id="this-or-that" data-nav="this-or-that" aria-labelledby="tot-title">
+      <div class="container">
+        <header class="section-head tot__head">
+          <p class="eyebrow">Mini game</p>
+          <h2 class="section-title" id="tot-title">This or That</h2>
+          <p class="tot__sub font-script">xem ta giống nhau như làooo</p>
+        </header>
+        <div class="tot__game" id="tot-game">
+          <noscript><p class="lead">Bật JavaScript để chơi This or That cùng HUB nhé.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CHƯƠNG 2 — chuyển cảnh ============ -->
+    <section class="chapter" id="chuong-2" data-nav="thuyen-rong" aria-labelledby="chapter-text">
+      <div class="chapter__sticky">
+        <div class="chapter__sky chapter__sky--night" aria-hidden="true"></div>
+        <div class="chapter__sky chapter__sky--dusk" aria-hidden="true"></div>
+        <div class="chapter__sun" aria-hidden="true"></div>
+        <svg class="chapter__hills" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 170 C 140 120, 260 110, 380 140 S 600 90, 760 120 S 1040 150, 1180 110 S 1360 100, 1440 130 V260 H0Z" fill="#1E1538" opacity=".85"/>
+          <path d="M0 205 C 200 185, 420 200, 640 190 S 1100 180, 1440 198 V260 H0Z" fill="#140F29"/>
+          <g class="chapter__shimmer" fill="#F2B45A"><rect x="660" y="214" width="120" height="2" rx="1" opacity=".5"/><rect x="630" y="226" width="180" height="1.6" rx="1" opacity=".35"/><rect x="690" y="238" width="60" height="1.4" rx="1" opacity=".3"/></g>
+        </svg>
+        <ul class="chapter__lanterns" aria-hidden="true">
+          <li style="--x:9%;--len:18vh;--d:3.8s"><i class="lt-glow"></i><i class="lt-body"></i></li>
+          <li style="--x:24%;--len:30vh;--d:4.4s"><i class="lt-glow"></i><i class="lt-body"></i></li>
+          <li style="--x:41%;--len:12vh;--d:3.5s"><i class="lt-glow"></i><i class="lt-body"></i></li>
+          <li style="--x:59%;--len:24vh;--d:4.1s"><i class="lt-glow"></i><i class="lt-body"></i></li>
+          <li style="--x:76%;--len:14vh;--d:3.9s"><i class="lt-glow"></i><i class="lt-body"></i></li>
+          <li style="--x:91%;--len:27vh;--d:4.6s"><i class="lt-glow"></i><i class="lt-body"></i></li>
+        </ul>
+        <div class="chapter__copy container">
+          <p class="eyebrow eyebrow--lantern chapter__label">Chương 2 · Dịch vụ</p>
+          <p class="chapter__text" id="chapter-text">Ngoài những điều mình thương, mình còn đồng hành cùng vài dịch vụ nhỏ ở Huế…</p>
+        </div>
       </div>
     </section>
 

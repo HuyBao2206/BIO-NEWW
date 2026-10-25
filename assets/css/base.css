@@ -171,7 +171,7 @@ html.is-loading .preloader { position: fixed; inset: 0; z-index: 200; display: g
 /* ================= REDUCED MOTION ================= */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .2s !important; scroll-behavior: auto !important; }
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: 0s !important; transition-delay: 0s !important; scroll-behavior: auto !important; }
   .marquee__track { animation: none; }
 }
 /* Mask theo dòng của SplitText: nới vùng cắt để dấu tiếng Việt (ẫ, ễ, ự…) không bị xén */

@@ -81,6 +81,38 @@ export const CONFIG = {
     ],
   },
 
+  // ——— Mini game "This or That" ———
+  // Chạy hoàn toàn trên trình duyệt, không lưu gì: tải lại trang là chơi lại từ đầu.
+  // hubPick: "a" hoặc "b" · hubNote: câu bình luận của HUB (bản nháp — TODO: HUB sửa lại theo giọng mình)
+  // colorA/colorB (tuỳ chọn): dùng màu làm nền thẻ thay cho emoji.
+  thisOrThat: {
+    questions: [
+      { id: "drink",  a: "Cà phê",      b: "Trà sữa",        emojiA: "☕", emojiB: "🧋", hubPick: "b",
+        hubNote: "Trà sữa full topping mới là chân ái nha, cà phê để dành lúc chạy deadline thôi." }, // TODO
+      { id: "place",  a: "Núi",         b: "Biển",           emojiA: "⛰️", emojiB: "🌊", hubPick: "b",
+        hubNote: "Cứ nghe sóng vỗ rì rào là lòng nhẹ tênh à." }, // TODO
+      { id: "sky",    a: "Bình minh",   b: "Hoàng hôn",      emojiA: "🌅", emojiB: "🌇", hubPick: "a",
+        hubNote: "Dậy sớm đón nắng đầu ngày, thấy cả ngày được thương ghê." }, // TODO
+      { id: "movie",  a: "Phim kinh dị", b: "Phim chữa lành", emojiA: "👻", emojiB: "🌿", hubPick: "a",
+        hubNote: "Sợ thì sợ chứ vẫn phải coi tới cảnh cuối á." }, // TODO
+      { id: "vibe",   a: "Náo nhiệt",   b: "Yên tĩnh",       emojiA: "🎉", emojiB: "🍃", hubPick: "b",
+        hubNote: "Một góc yên tĩnh với ly nước mát là đủ vui rồi." }, // TODO
+      { id: "bird",   a: "Gà",          b: "Vịt",            emojiA: "🐔", emojiB: "🦆", hubPick: "b",
+        hubNote: "Vịt nhìn ngố ngố dễ thương mà, đúng hông?" }, // TODO
+      { id: "color",  a: "Đỏ",          b: "Vàng",           emojiA: "",   emojiB: "",   hubPick: "b",
+        colorA: "#C8283A", colorB: "#F2C14E",
+        hubNote: "Vàng như ánh đèn lồng trên sông Hương — ấm áp ghê." }, // TODO
+    ],
+    // Câu chốt theo số câu giống nhau (min–max). TODO: HUB sửa lại nếu muốn.
+    endings: [
+      { min: 0, max: 2, text: "Khác nhau xíu mới vui chứ! Kể HUB nghe gu của bạn đi nè." },
+      { min: 3, max: 4, text: "Nửa giống nửa khác — vừa đủ để nói chuyện cả đêm dưới trăng 🌙" },
+      { min: 5, max: 6, text: "Hợp gu ghê! Chắc chắn mình sẽ thân nhau lắm đó ✨" },
+      { min: 7, max: 7, text: "Tri kỷ thất lạc đây rồi! Giống nhau 7/7 luôn 🎉" },
+    ],
+    autoNextMs: 2500,
+  },
+
   services: {
     dragonBoat: {
       title: "Thuyền Rồng Sông Hương",

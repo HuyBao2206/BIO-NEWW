@@ -1,5 +1,5 @@
 /* ================= HERO ================= */
-.hero { min-height: 100svh; display: grid; place-items: center; padding-block: calc(var(--header-h) + 2rem) 6rem; overflow: hidden; }
+.hero { min-height: 100svh; display: grid; grid-template-rows: 1fr auto; justify-items: center; align-items: center; gap: clamp(1.5rem, 4vh, 3rem); padding-block: calc(var(--header-h) + 2rem) 1.25rem; overflow: hidden; }
 .hero__inner { position: relative; z-index: 2; display: grid; justify-items: center; text-align: center; }
 .constellation { position: absolute; z-index: 1; top: 64px; right: -36px; width: 230px; opacity: .85; pointer-events: none; overflow: visible; }
 @media (min-width: 768px) { .constellation { top: 15%; right: max(3vw, calc((100vw - 1240px) / 2)); width: clamp(260px, 28vw, 400px); } }
@@ -42,7 +42,7 @@
 .zodiac.is-open .zodiac__card { transform: translateX(-50%) rotateX(0); opacity: 1; pointer-events: auto; }
 
 /* Gợi ý cuộn */
-.scroll-hint { position: absolute; z-index: 2; left: 50%; bottom: 1.6rem; transform: translateX(-50%); display: grid; justify-items: center; gap: .5rem; color: var(--silver-dim); font-size: var(--fs-xs); letter-spacing: .25em; text-transform: uppercase; text-decoration: none; }
+.scroll-hint { position: relative; z-index: 2; display: grid; justify-items: center; gap: .5rem; color: var(--silver-dim); font-size: var(--fs-xs); letter-spacing: .25em; text-transform: uppercase; text-decoration: none; }
 .scroll-hint i { position: relative; width: 1px; height: 46px; background: rgba(174, 184, 204, .2); overflow: hidden; }
 .scroll-hint i::after { content: ""; position: absolute; left: 0; top: -40%; width: 100%; height: 40%; background: var(--gold); animation: hint 2.2s var(--ease-in-out) infinite; }
 @keyframes hint { to { transform: translateY(350%); } }
