@@ -82,26 +82,26 @@ export const CONFIG = {
   },
 
   // ——— Mini game "This or That" ———
-  // Chạy hoàn toàn trên trình duyệt, không lưu gì: tải lại trang là chơi lại từ đầu.
-  // hubPick: "a" hoặc "b" · hubNote: câu bình luận của HUB (bản nháp — TODO: HUB sửa lại theo giọng mình)
+  // Chạy hoàn toàn trên trình duyệt, không lưu gì. Mỗi lượt ghé chỉ chơi 1 lần (không có nút chơi lại; F5 để chơi lại).
+  // hubPick: "a" hoặc "b" · hubNote: câu bình luận của HUB
   // colorA/colorB (tuỳ chọn): dùng màu làm nền thẻ thay cho emoji.
   thisOrThat: {
     questions: [
       { id: "drink",  a: "Cà phê",      b: "Trà sữa",        emojiA: "☕", emojiB: "🧋", hubPick: "b",
-        hubNote: "Trà sữa full topping mới là chân ái nha, cà phê để dành lúc chạy deadline thôi." }, // TODO
+        hubNote: "Trà sữa mới là chân ái nha, cà phê úng hong được." },
       { id: "place",  a: "Núi",         b: "Biển",           emojiA: "⛰️", emojiB: "🌊", hubPick: "b",
-        hubNote: "Cứ nghe sóng vỗ rì rào là lòng nhẹ tênh à." }, // TODO
+        hubNote: "Cứ nghe sóng vỗ rì rào là lòng nhẹ tênh, mà biển cũng đẹp nữa ấy nhỡ" },
       { id: "sky",    a: "Bình minh",   b: "Hoàng hôn",      emojiA: "🌅", emojiB: "🌇", hubPick: "a",
-        hubNote: "Dậy sớm đón nắng đầu ngày, thấy cả ngày được thương ghê." }, // TODO
+        hubNote: "Không thức khuya, toàn thức đến sáng nên vẫn iu bình minh nhất" },
       { id: "movie",  a: "Phim kinh dị", b: "Phim chữa lành", emojiA: "👻", emojiB: "🌿", hubPick: "a",
-        hubNote: "Sợ thì sợ chứ vẫn phải coi tới cảnh cuối á." }, // TODO
+        hubNote: "Hồi bé thì còn rén đây, giờ thì phim kinh dị như phim hài hoy" },
       { id: "vibe",   a: "Náo nhiệt",   b: "Yên tĩnh",       emojiA: "🎉", emojiB: "🍃", hubPick: "b",
-        hubNote: "Một góc yên tĩnh với ly nước mát là đủ vui rồi." }, // TODO
+        hubNote: "Một góc yên tĩnh với ly nước đậu/trà sữa là đủ vui rồi." },
       { id: "bird",   a: "Gà",          b: "Vịt",            emojiA: "🐔", emojiB: "🦆", hubPick: "b",
-        hubNote: "Vịt nhìn ngố ngố dễ thương mà, đúng hông?" }, // TODO
+        hubNote: "Vịt nhìn ngố ngố dễ thương mà, đúng hông?" },
       { id: "color",  a: "Đỏ",          b: "Vàng",           emojiA: "",   emojiB: "",   hubPick: "b",
         colorA: "#C8283A", colorB: "#F2C14E",
-        hubNote: "Vàng như ánh đèn lồng trên sông Hương — ấm áp ghê." }, // TODO
+        hubNote: "Bị rối loạn sắc giác bẩm sinh có thik màu gì âu, thích theo ẻm thoy" },
     ],
     // Câu chốt theo số câu giống nhau (min–max). TODO: HUB sửa lại nếu muốn.
     endings: [
@@ -110,7 +110,7 @@ export const CONFIG = {
       { min: 5, max: 6, text: "Hợp gu ghê! Chắc chắn mình sẽ thân nhau lắm đó ✨" },
       { min: 7, max: 7, text: "Tri kỷ thất lạc đây rồi! Giống nhau 7/7 luôn 🎉" },
     ],
-    autoNextMs: 2500,
+    autoNextMs: 5000, // tự sang câu sau sau 5 giây
   },
 
   // ——— "Tín hiệu vũ trụ dành cho bạn" (tarot) ———

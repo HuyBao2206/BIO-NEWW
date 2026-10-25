@@ -1,4 +1,5 @@
-/* Mini game "This or That" — chạy hoàn toàn trên trình duyệt, không lưu trạng thái (tải lại = chơi lại) */
+/* Mini game "This or That" — chạy hoàn toàn trên trình duyệt, không lưu trạng thái.
+ * Mỗi lượt ghé chỉ chơi một lần: không có nút chơi lại (F5 để chơi lại). */
 import { $, $$, h, env, onVisible } from './utils.js';
 import { confetti } from './hero.js';
 
@@ -8,7 +9,7 @@ export function initThisOrThat(cfg) {
   if (!root || !data?.questions?.length) return;
   const qs = data.questions;
   const total = qs.length;
-  const autoMs = data.autoNextMs ?? 2500;
+  const autoMs = data.autoNextMs ?? 5000;
   let index = 0, answers = [], answered = false, autoT = 0, inView = false;
 
   /* ——— Khung cố định ——— */
@@ -126,18 +127,16 @@ export function initThisOrThat(cfg) {
         h('span', { class: 'sr-only', text: ans.same ? 'Giống: ' : 'Khác: ' }),
         ans.same ? mine : `${mine} · HUB: ${hub}`);
     }));
-    const again = h('button', { class: 'btn btn--ghost', type: 'button', text: 'Chơi lại' });
-    again.addEventListener('click', () => { index = 0; answers = []; renderQuestion(); $('.tot-card', stage)?.focus({ preventScroll: true }); });
     const view = h('div', { class: 'tot__result' },
       h('p', { class: 'tot__score', 'aria-live': 'polite' }, 'Ta giống nhau ', num, h('span', { text: `/${total}` })),
       ending ? h('p', { class: 'tot__ending', text: ending.text }) : null,
       chips,
-      h('div', { class: 'tot__actions' }, again, h('a', { class: 'btn btn--gold', href: '#luu-but', 'data-magnetic': '' }, 'Để lại lời nhắn cho HUB')));
+      h('div', { class: 'tot__actions' }, h('a', { class: 'btn btn--gold tot__msg', href: '#luu-but', 'data-magnetic': '' }, 'Để lại lời nhắn cho HUB')));
     stage.replaceChildren(view);
     stepEl.replaceChildren('Hoàn thành ', h('b', { text: total }), ` / ${total}`);
     bar.style.transform = 'scaleX(1)';
     animateIn(view);
-    if (hadFocus) again.focus({ preventScroll: true });
+    if (hadFocus) $('.tot__msg', view)?.focus({ preventScroll: true });
     // Đếm số
     if (!env.reducedMotion) {
       const t0 = performance.now(), dur = 900 + score * 80;

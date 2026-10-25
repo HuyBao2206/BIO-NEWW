@@ -83,7 +83,7 @@ Mặc định chạy ở **chế độ demo**: lời nhắn chỉ lưu trên tr�
 ## 8. Mini game & Tín hiệu vũ trụ
 
 ### This or That
-Câu hỏi, đáp án của HUB và câu bình luận (`hubNote`) nằm trong `CONFIG.thisOrThat` (`assets/js/config.js`). Game không lưu gì, tải lại trang là chơi lại từ đầu.
+Câu hỏi, đáp án của HUB và câu bình luận (`hubNote`) nằm trong `CONFIG.thisOrThat` (`assets/js/config.js`). Sau mỗi câu, game tự sang câu tiếp theo sau `autoNextMs` (mặc định 5 giây). Mỗi lượt ghé chỉ chơi được một lần, không có nút chơi lại. Game không lưu gì, nên F5 là chơi lại từ đầu.
 
 ### Tín hiệu vũ trụ dành cho bạn (tarot)
 - **Dữ liệu 78 lá** nằm riêng ở `assets/js/data/tarot.js` (22 Ẩn chính + 4 bộ × 14 lá). Mỗi lá có từ khoá, thông điệp xuôi/ngược, Tình cảm · Công việc · Lời khuyên.
@@ -127,7 +127,7 @@ Có thể thay từng lá một; lá nào chưa có ảnh thì vẫn dùng bản
 | 13 | Thêm 2–4 bài nhạc nền royalty-free | `assets/music/` + `CONFIG.music.playlist` |
 | 14 | Kết nối Supabase cho sổ lưu bút | `CONFIG.guestbook.supabaseUrl/supabaseKey` — xem SETUP-GUESTBOOK.md |
 | 15 | (Tuỳ chọn) Bật workflow keepalive Supabase | repository secrets — xem SETUP-GUESTBOOK.md |
-| 16 | Sửa các câu `hubNote` và câu chốt của This or That cho đúng giọng HUB | `CONFIG.thisOrThat` |
+| 16 | (Tuỳ chọn) Sửa các câu chốt theo mức điểm của This or That | `CONFIG.thisOrThat.endings` |
 | 17 | (Tuỳ chọn) Thay mặt bài tarot bằng ảnh Rider–Waite–Smith 1909 | `assets/images/tarot/<id>.webp` — xem mục 8 |
 
 ---
