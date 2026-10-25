@@ -1,0 +1,11 @@
+/* ================= QUOTE ================= */
+.quote { min-height: 110vh; display: grid; place-items: center; overflow: hidden; }
+.quote__road { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.quote__road-base { fill: none; stroke: rgba(174, 184, 204, .1); stroke-width: 1.5; stroke-dasharray: 3 9; vector-effect: non-scaling-stroke; }
+.quote__road-line { fill: none; stroke: url(#road-grad); stroke-width: 2; stroke-linecap: round; vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 6px rgba(232, 194, 122, .5)); }
+.quote__spark { fill: #FFF4D6; filter: drop-shadow(0 0 8px #E8C27A) drop-shadow(0 0 18px rgba(232, 194, 122, .7)); opacity: 0; }
+.quote__inner { position: relative; z-index: 2; max-width: 1080px; text-align: center; }
+.quote__mark { display: block; height: .6em; font-family: var(--font-display); font-size: clamp(6rem, 4rem + 8vw, 12rem); line-height: 1; color: var(--gold); opacity: .35; }
+.quote__text { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: var(--fs-quote); line-height: 1.22; letter-spacing: -.005em; color: var(--pearl); text-wrap: balance; }
+.quote__text .word { display: inline-block; }
+.quote__sign { margin-top: 2.2rem; font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.8rem); color: var(--gold-soft); }

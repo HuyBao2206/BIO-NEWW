@@ -1,0 +1,74 @@
+/* ================= DESIGN TOKENS — "Moonlit Journey" ================= */
+:root {
+  /* Màu nền: đêm trăng */
+  --night-900: #080C19;
+  --night-800: #0B1020;
+  --night-700: #121A33;
+  --night-600: #1A2444;
+  --night-500: #25315A;
+
+  /* Chữ */
+  --pearl: #EDE9E3;
+  --silver: #AEB8CC;
+  --silver-dim: #8691A8;
+
+  /* Accent */
+  --gold: #E8C27A;
+  --gold-soft: #F3DDAB;
+  --gold-deep: #C99A4B;
+  --hue-purple: #6B4E9B;      /* tím Huế */
+  --hue-purple-soft: #9C7FCB;
+  --lantern: #F2B45A;         /* vàng đèn lồng */
+  --order: #E8573A;           /* cam đỏ — dùng tiết chế */
+  --order-soft: #F28C72;
+  --success: #8FD3B6;
+  --danger: #F08A7E;
+
+  /* Bề mặt glass */
+  --glass-bg: rgba(22, 30, 58, 0.55);
+  --glass-bg-strong: rgba(18, 26, 51, 0.82);
+  --glass-line: rgba(237, 233, 227, 0.12);
+  --glass-line-strong: rgba(237, 233, 227, 0.22);
+  --border-grad: linear-gradient(135deg, rgba(243, 221, 171, .55), rgba(174, 184, 204, .08) 40%, rgba(174, 184, 204, .08) 60%, rgba(232, 194, 122, .35));
+
+  /* Font */
+  --font-display: "Cormorant Garamond", "Playfair Display", "Noto Serif SC", "Noto Sans KR", Georgia, "Times New Roman", serif;
+  --font-body: "Be Vietnam Pro", "Noto Sans KR", "Noto Sans SC", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-script: "Dancing Script", "Brush Script MT", cursive;
+  --font-cjk: "Noto Serif SC", "Noto Sans KR", "PingFang SC", "Microsoft YaHei", "Apple SD Gothic Neo", "Malgun Gothic", serif;
+
+  /* Thang chữ fluid (360px → 1440px) */
+  --fs-xs: clamp(0.75rem, 0.72rem + 0.12vw, 0.8125rem);
+  --fs-sm: clamp(0.8125rem, 0.78rem + 0.15vw, 0.9rem);
+  --fs-base: clamp(0.95rem, 0.9rem + 0.22vw, 1.0625rem);
+  --fs-md: clamp(1.05rem, 0.98rem + 0.35vw, 1.25rem);
+  --fs-lg: clamp(1.25rem, 1.1rem + 0.7vw, 1.6rem);
+  --fs-xl: clamp(1.6rem, 1.3rem + 1.4vw, 2.4rem);
+  --fs-2xl: clamp(2.2rem, 1.6rem + 2.8vw, 4rem);
+  --fs-3xl: clamp(3.2rem, 2rem + 6vw, 7.5rem);
+  --fs-quote: clamp(1.9rem, 1.2rem + 3.4vw, 4.4rem);
+
+  /* Khoảng cách */
+  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem;
+  --space-5: 1.5rem; --space-6: 2rem; --space-7: 3rem; --space-8: 4rem;
+  --section-y: clamp(5rem, 3.5rem + 7vw, 10rem);
+  --gutter: clamp(1rem, 0.6rem + 2vw, 2.5rem);
+  --container: 1240px;
+
+  /* Bo góc */
+  --r-sm: 10px; --r-md: 16px; --r-lg: 24px; --r-xl: 32px; --r-pill: 999px;
+
+  /* Bóng & glow */
+  --shadow-1: 0 10px 30px -12px rgba(0, 0, 0, .55);
+  --shadow-2: 0 30px 60px -20px rgba(0, 0, 0, .65);
+  --glow-gold: 0 0 40px -6px rgba(232, 194, 122, .45);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-1: .4s; --dur-2: .8s; --dur-3: 1.2s;
+  --stagger: .06s;
+
+  --header-h: 72px;
+}

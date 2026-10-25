@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lạc đường giữa đêm trăng — Bảo Huy (HUB)</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0B1020">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500&family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Dancing+Script:wght@600&display=swap">
+  <!-- CSS viết inline vì trang 404 có thể được phục vụ ở bất kỳ độ sâu đường dẫn nào -->
+  <style>
+    :root { --night: #0B1020; --night2: #121A33; --pearl: #EDE9E3; --silver: #AEB8CC; --gold: #E8C27A; --gold-soft: #F3DDAB; --gold-deep: #C99A4B; }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { margin: 0; display: grid; place-items: center; padding: 24px 16px; overflow: hidden; color: var(--pearl); font-family: "Be Vietnam Pro", system-ui, sans-serif; text-align: center;
+      background: radial-gradient(900px 600px at 70% 10%, rgba(232,194,122,.08), transparent 60%), linear-gradient(180deg, var(--night), var(--night2)); }
+    .stars { position: fixed; inset: 0; pointer-events: none; background-image:
+      radial-gradient(1px 1px at 10% 20%, #fff8 50%, transparent 51%), radial-gradient(1px 1px at 30% 70%, #fff6 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 55% 30%, #F3DDABaa 50%, transparent 51%), radial-gradient(1px 1px at 80% 60%, #fff7 50%, transparent 51%),
+      radial-gradient(1px 1px at 90% 15%, #fff5 50%, transparent 51%), radial-gradient(1.5px 1.5px at 20% 85%, #fff6 50%, transparent 51%),
+      radial-gradient(1px 1px at 65% 85%, #fff5 50%, transparent 51%), radial-gradient(1px 1px at 45% 50%, #fff4 50%, transparent 51%); }
+    .moon { position: fixed; top: -60px; right: -60px; width: 300px; height: 300px; border-radius: 50%; opacity: .35;
+      background: radial-gradient(circle at 36% 34%, #fffcf0, #e9dcc0 30%, rgba(150,160,190,.1) 66%, transparent 70%);
+      -webkit-mask: radial-gradient(circle at 62% 40%, transparent 0 34%, #000 47%); mask: radial-gradient(circle at 62% 40%, transparent 0 34%, #000 47%); }
+    main { position: relative; max-width: 560px; }
+    .code { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: clamp(6rem, 25vw, 11rem); line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(232,194,122,.6); margin: 0; }
+    h1 { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: clamp(1.8rem, 6vw, 2.8rem); margin: .4rem 0 .8rem; }
+    p { color: var(--silver); line-height: 1.7; margin: 0 0 2rem; }
+    .sign { font-family: "Dancing Script", cursive; color: var(--gold-soft); font-size: 1.6rem; margin-top: 2rem; }
+    a.btn { display: inline-flex; align-items: center; gap: .5rem; min-height: 48px; padding: .8rem 1.6rem; border-radius: 999px; text-decoration: none; font-weight: 500; color: #1A1407;
+      background: linear-gradient(135deg, var(--gold-soft), var(--gold) 50%, var(--gold-deep)); box-shadow: 0 10px 30px -10px rgba(232,194,122,.6); }
+    a.btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+    svg.road { display: block; width: 100%; max-width: 420px; margin: 0 auto 1.5rem; }
+    svg.road path { fill: none; stroke: var(--gold); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 4 8; }
+    @media (prefers-reduced-motion: no-preference) { svg.road path { animation: dash 6s linear infinite; } @keyframes dash { to { stroke-dashoffset: -120; } } }
+  </style>
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+  <div class="moon" aria-hidden="true"></div>
+  <main>
+    <p class="code" aria-hidden="true">404</p>
+    <h1>Lạc đường giữa đêm trăng</h1>
+    <svg class="road" viewBox="0 0 420 60" aria-hidden="true"><path d="M5 50 C 90 0, 150 60, 210 30 S 330 0, 415 20"/></svg>
+    <p>Con đường này chưa ai từng đi qua — có lẽ trang bạn tìm đã đổi chỗ hoặc không còn nữa.</p>
+    <a class="btn" id="home" href="/">Về trang chủ <span aria-hidden="true">✦</span></a>
+    <p class="sign">— HUB</p>
+  </main>
+  <script>
+    /* Tìm đúng trang chủ cho cả username.github.io lẫn username.github.io/ten-repo/ */
+    (function () {
+      var seg = location.pathname.split('/').filter(Boolean)[0];
+      if (!seg || !/\.github\.io$/.test(location.hostname)) return;
+      var base = '/' + seg + '/';
+      fetch(base, { method: 'HEAD' }).then(function (r) { if (r.ok) document.getElementById('home').href = base; }).catch(function () {});
+    })();
+  </script>
+</body>
+</html>

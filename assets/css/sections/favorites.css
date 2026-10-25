@@ -1,0 +1,71 @@
+/* ================= FAVORITES ================= */
+.fav-panel[hidden] { display: none !important; }
+html:not(.js) .fav-panel[hidden] { display: block !important; }
+html:not(.js) .fav-panel + .fav-panel { margin-top: 3rem; }
+.fav-panel__title { display: none; }
+html:not(.js) .fav-panel__title { display: block; font-size: var(--fs-xl); margin-bottom: 1rem; }
+
+.fcard { position: relative; height: 100%; border-radius: var(--r-lg); background: linear-gradient(180deg, rgba(26, 36, 68, .7), rgba(18, 26, 51, .7)); border: 1px solid var(--glass-line); overflow: hidden; box-shadow: var(--shadow-1); }
+.fcard__media { border-radius: var(--r-lg) var(--r-lg) 0 0; }
+.fcard__body { padding: 1rem 1.15rem 1.25rem; }
+.fcard__title { font-family: var(--font-display); font-size: var(--fs-lg); font-weight: 600; line-height: 1.2; color: var(--pearl); }
+.fcard__sub { margin-top: .25rem; color: var(--silver); font-size: var(--fs-sm); }
+
+.fcard--artist .fallback__name, .fcard--movie .fallback__name { display: none; }
+.fcard--artist .fallback, .fcard--movie .fallback { padding-bottom: 4rem; }
+
+/* Nghệ sĩ 4:5 */
+.fcard--artist .fcard__media { aspect-ratio: 4 / 5; }
+.fcard--artist .fcard__media::after { content: ""; position: absolute; inset: 55% 0 0; background: linear-gradient(transparent, rgba(11, 16, 32, .9)); z-index: 2; }
+.fcard--artist .fcard__body { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; }
+
+/* Âm nhạc — vỏ đĩa than */
+.fcard--music { background: linear-gradient(180deg, rgba(26, 36, 68, .55), rgba(12, 18, 38, .8)); }
+.vinyl-wrap { position: relative; aspect-ratio: 1 / .86; margin: 1.1rem 1.1rem 0; }
+.vinyl-wrap .sleeve { position: absolute; left: 0; top: 0; width: 80%; aspect-ratio: 1; z-index: 2; border-radius: var(--r-sm); box-shadow: 6px 10px 30px -8px rgba(0, 0, 0, .7), inset 0 0 0 1px rgba(255, 255, 255, .06); transition: transform .8s var(--ease-out); }
+.vinyl-wrap .sleeve.media { position: absolute; }
+.vinyl { position: absolute; z-index: 1; top: 4%; left: 6%; width: 72%; aspect-ratio: 1; border-radius: 50%; transition: transform .9s var(--ease-out); }
+.vinyl__disc { position: absolute; inset: 0; border-radius: 50%;
+  background:
+    radial-gradient(circle, var(--label, #E8C27A) 0 15%, #111 15.5% 17%, transparent 17.5%),
+    repeating-radial-gradient(circle, #121212 0 1.6px, #1d1d1f 1.6px 3.2px),
+    #111;
+  box-shadow: 0 10px 30px -6px rgba(0, 0, 0, .8), inset 0 0 0 1px rgba(255, 255, 255, .05); }
+.vinyl__disc::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 30deg, transparent 0 10%, rgba(255, 255, 255, .14) 14%, transparent 20% 55%, rgba(255, 255, 255, .1) 60%, transparent 66%); }
+.vinyl__disc::after { content: ""; position: absolute; left: 50%; top: 50%; width: 3.5%; height: 3.5%; margin: -1.75% 0 0 -1.75%; border-radius: 50%; background: #0B1020; }
+.vinyl__disc { animation: vinyl-spin 3.2s linear infinite; animation-play-state: paused; }
+.fcard--music.is-open .vinyl { transform: translateX(36%); }
+.fcard--music.is-open .vinyl__disc { animation-play-state: running; }
+.fcard--music.is-open .sleeve { transform: translateX(-3%) rotate(-2deg); }
+@media (hover: hover) { .fcard--music:hover .vinyl { transform: translateX(36%); } .fcard--music:hover .vinyl__disc { animation-play-state: running; } .fcard--music:hover .sleeve { transform: translateX(-3%) rotate(-2deg); } }
+@keyframes vinyl-spin { to { transform: rotate(360deg); } }
+.fcard--music .fcard__body { display: flex; align-items: flex-end; justify-content: space-between; gap: .8rem; }
+.fcard__link { flex: none; display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; padding: .4rem .9rem; border-radius: var(--r-pill); font-size: var(--fs-xs); font-weight: 500; text-decoration: none; color: var(--pearl); border: 1px solid var(--glass-line-strong); background: rgba(237, 233, 227, .05); transition: background-color .3s, border-color .3s; }
+.fcard__link:hover { background: rgba(232, 194, 122, .14); border-color: rgba(232, 194, 122, .5); }
+.fcard__link svg { width: 14px; height: 14px; }
+.vinyl-toggle { position: absolute; inset: 0; z-index: 3; border-radius: var(--r-lg) var(--r-lg) 0 0; }
+
+/* Phim — poster 2:3 */
+.fcard--movie { perspective: 900px; background: none; border: 0; box-shadow: none; overflow: visible; }
+.fcard--movie .tilt { position: relative; border-radius: var(--r-lg); overflow: hidden; background: var(--night-600); border: 1px solid var(--glass-line); box-shadow: var(--shadow-2); }
+.fcard--movie .fcard__media { aspect-ratio: 2 / 3; border-radius: 0; }
+.fcard--movie .fcard__media::after { content: ""; position: absolute; inset: 50% 0 0; background: linear-gradient(transparent, rgba(8, 12, 25, .95)); z-index: 2; }
+.fcard--movie .fcard__body { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; transform: translateZ(30px); }
+.fcard__badge { position: absolute; z-index: 3; top: .9rem; left: .9rem; padding: .25rem .65rem; border-radius: var(--r-pill); font-size: var(--fs-xs); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #1A1407; background: var(--gold); transform: translateZ(40px); }
+.fcard__badge--series { background: var(--hue-purple-soft); color: #120B1F; }
+.fcard__vi { margin-top: .2rem; color: var(--silver); font-size: var(--fs-sm); }
+.cjk { font-family: var(--font-cjk); font-style: normal; }
+
+/* Ngôn ngữ — thẻ chữ */
+.fcard--lang { display: grid; grid-template-rows: 1fr auto; aspect-ratio: 4 / 5; padding: 1.4rem; background: linear-gradient(160deg, rgba(26, 36, 68, .85), rgba(11, 16, 32, .9)); }
+.fcard--lang::before { content: ""; position: absolute; inset: 0; opacity: .5; pointer-events: none; }
+.fcard--lang[data-pattern="en"]::before { background: repeating-linear-gradient(0deg, rgba(232, 194, 122, .06) 0 1px, transparent 1px 28px); }
+.fcard--lang[data-pattern="fr"]::before { background: radial-gradient(rgba(174, 184, 204, .16) 1px, transparent 1.5px) 0 0 / 18px 18px; }
+.fcard--lang[data-pattern="zh"]::before { background: linear-gradient(rgba(232, 87, 58, .08) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(90deg, rgba(232, 87, 58, .08) 1px, transparent 1px) 0 0 / 40px 40px; }
+.fcard--lang[data-pattern="ko"]::before { background: repeating-radial-gradient(circle at 100% 100%, rgba(156, 127, 203, .1) 0 1px, transparent 1px 22px); }
+.fcard--lang .lang__big { position: relative; align-self: center; font-family: var(--font-display); font-size: clamp(2.6rem, 2rem + 3vw, 4rem); line-height: 1.1; color: var(--pearl); word-break: keep-all; min-height: 1.2em; }
+.fcard--lang .lang__big.cjk { font-weight: 500; }
+.lang__caret { display: inline-block; width: 2px; height: .9em; margin-left: .08em; vertical-align: -.08em; background: var(--gold); animation: caret 1s steps(1) infinite; }
+@keyframes caret { 50% { opacity: 0; } }
+.lang__roman { position: relative; margin-top: .4rem; color: var(--gold-soft); font-family: var(--font-display); font-style: italic; font-size: var(--fs-lg); }
+.lang__name { position: relative; padding-top: 1rem; border-top: 1px solid var(--glass-line); font-size: var(--fs-sm); letter-spacing: .16em; text-transform: uppercase; color: var(--silver); display: flex; justify-content: space-between; }
