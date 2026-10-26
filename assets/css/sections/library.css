@@ -111,6 +111,7 @@
 .bm__progress-bar { position: relative; flex: 1; height: 5px; border-radius: 5px; background: rgba(237, 233, 227, .1); overflow: hidden; }
 .bm__progress-bar i { position: absolute; inset: 0; background: linear-gradient(90deg, var(--gold-deep), var(--gold-soft)); transform-origin: 0 50%; }
 .bm__hint { font-size: var(--fs-xs); color: var(--silver-dim); }
+.bm__note { flex-basis: 100%; margin: 0; color: var(--silver); line-height: 1.5; }
 .bm__go { align-self: stretch; min-height: 44px; margin-top: .35rem; padding-block: .6rem; }
 
 .bm__cover { position: absolute; inset: 0; z-index: 2; transform-origin: 0 50%; transform-style: preserve-3d; transition: transform 1.15s cubic-bezier(0.45, 0.05, 0.2, 1), opacity .4s .7s; }

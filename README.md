@@ -128,7 +128,7 @@ Mỗi cuốn sách là một trang web riêng HUB đang viết. Toàn bộ dữ 
 | `chapters` | 4–6 tên chương |
 
 **Đổi trạng thái:**
-- Bắt đầu viết: `status: "writing"`, rồi cập nhật dần `progress` (vd `30` → `60` → `90`).
+- Bắt đầu viết: `status: "writing"`, rồi cập nhật dần `progress` (vd `30` → `60` → `90`). Nếu đã có bản xem trước thì điền luôn `url`: nút sẽ thành "Xem ngay bản đang viết →". Có thể thêm `note` (1 câu) để ghi phần nào đã xong.
 - **Khi web lên sóng:** điền `url: "https://..."` (phải bắt đầu bằng `https://`) và đổi `status: "live"`. Bìa sẽ phát sáng và nút "Mở cửa vào thư viện →" bật lên. Bấm nút thì web mở ở **tab mới**, nên khách không rời khỏi bio và nhạc nền vẫn chạy.
 - Nếu để `status: "live"` mà chưa có `url` thì nút vẫn bị khoá, kèm dòng "Đường dẫn đang được cập nhật".
 

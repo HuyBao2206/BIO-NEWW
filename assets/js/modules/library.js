@@ -33,7 +33,8 @@ const buf = new Uint32Array(1);
 function randInt(n) { const lim = Math.floor(0x100000000 / n) * n; do crypto.getRandomValues(buf); while (buf[0] >= lim); return buf[0] % n; }
 
 const is3D = () => matchMedia('(min-width: 900px)').matches && !env.reducedMotion;
-const isOpenable = (b) => b.status === 'live' && /^https?:\/\//.test(b.url || '');
+// Mở được khi có link và sách đã lên sóng — hoặc đang viết nhưng đã có bản xem trước
+const isOpenable = (b) => (b.status === 'live' || b.status === 'writing') && /^https?:\/\//.test(b.url || '');
 
 /* ——— Bìa sách (dùng cho carousel/lưới và mặt trước trong hộp mở sách) ——— */
 function coverEl(b) {
@@ -45,7 +46,7 @@ function coverEl(b) {
     h('span', { class: 'cover__title', text: b.titleVi }),
     h('span', { class: 'cover__en', text: b.titleEn }),
     b.status === 'writing'
-      ? h('span', { class: 'cover__status' }, h('span', { class: 'cover__bar' }, h('i', { style: { transform: `scaleX(${pct / 100})` } })), `${st.label} · ${pct}%`)
+      ? h('span', { class: 'cover__status' }, h('span', { class: 'cover__bar' }, h('i', { style: { transform: `scaleX(${pct / 100})` } })), `${st.label} · ${pct}%${isOpenable(b) ? ' · xem ngay được' : ''}`)
       : h('span', { class: 'cover__status', text: st.label }),
     b.status === 'soon' ? h('span', { class: 'cover__seal', 'aria-hidden': 'true', text: 'H' }) : null);
 }
@@ -76,7 +77,7 @@ export function initLibrary(cfg, scroll) {
     return h('button', {
       type: 'button', class: `spine spine--${b.status}`, 'data-id': b.id,
       style: { '--c': b.color, '--w': `${width}px`, '--h': `${height}px` },
-      'aria-label': `${b.titleVi} (${b.titleEn}) — ${st.label}${b.status === 'writing' ? ` ${pct}%` : ''}. Bấm để xem mục lục`,
+      'aria-label': `${b.titleVi} (${b.titleEn}) — ${st.label}${b.status === 'writing' ? ` ${pct}%` : ''}${isOpenable(b) ? ', đã có bản xem trước' : ''}. Bấm để xem mục lục`,
     },
     h('span', { class: 'spine__face' },
       h('span', { class: 'spine__band', 'aria-hidden': 'true' }),
@@ -159,13 +160,14 @@ export function initLibrary(cfg, scroll) {
     const pct = Math.max(0, Math.min(100, Number(b.progress) || 0));
     const live = isOpenable(b);
     const action = live
-      ? h('a', { class: 'btn btn--gold bm__go', href: b.url, target: '_blank', rel: 'noopener noreferrer' }, 'Mở cửa vào thư viện →')
+      ? h('a', { class: 'btn btn--gold bm__go', href: b.url, target: '_blank', rel: 'noopener noreferrer' }, b.status === 'writing' ? 'Xem ngay bản đang viết →' : 'Mở cửa vào thư viện →')
       : h('button', { class: 'btn btn--gold bm__go', type: 'button', disabled: true, 'aria-disabled': 'true' }, b.status === 'writing' ? 'HUB đang viết…' : 'Sắp ra mắt');
     const statusBlock = h('div', { class: `bm__status bm__status--${b.status}` },
       h('span', { class: 'bm__badge', text: st.label }),
       b.status === 'writing' ? h('div', { class: 'bm__progress', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-valuenow': pct, 'aria-label': 'Tiến độ viết' },
         h('span', { class: 'bm__progress-bar' }, h('i', { style: { transform: `scaleX(${pct / 100})` } })), h('span', { text: `${pct}%` })) : null,
-      b.status === 'live' && !live ? h('span', { class: 'bm__hint', text: 'Đường dẫn đang được cập nhật.' }) : null);
+      b.status === 'live' && !live ? h('span', { class: 'bm__hint', text: 'Đường dẫn đang được cập nhật.' }) : null,
+      b.note ? h('p', { class: 'bm__hint bm__note', text: b.note }) : null);
     const toc = h('div', { class: 'bm__page' },
       h('p', { class: 'bm__kicker', text: 'Mục lục' }),
       h('h3', { class: 'bm__title', id: 'bm-title', text: b.titleVi }),

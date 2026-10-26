@@ -131,7 +131,8 @@ export const CONFIG = {
         id: "understand-yourself", titleVi: "Thấu Hiểu & Phát Triển Bản Thân", titleEn: "Understand Yourself",
         tagline: "Đọc lại chính mình qua thần số học, cung hoàng đạo và các bài trắc nghiệm tính cách, rồi nối chúng với lựa chọn nghề nghiệp thực tế.",
         theme: "ban-than", color: "#A8553F", glyph: "spiral",
-        status: "writing", progress: 30, url: "", // TODO: điền link khi web lên sóng
+        status: "writing", progress: 50, url: "https://huybao2206.github.io/whoareyou/",
+        note: "Đã có phần mở đầu và một phần Thần số học — các chương khác HUB đang viết tiếp.", // ghi chú nhỏ (tuỳ chọn)
         chapters: ["Thần số học", "Cung hoàng đạo & Con giáp", "Bản đồ tính cách", "Sở thích nghề nghiệp", "Nghề nghiệp hôm nay & ngày mai", "Kỹ năng nên đầu tư"],
       },
       {
