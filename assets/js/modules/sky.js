@@ -69,10 +69,17 @@ export function initSky(canvas) {
     ctx.globalAlpha = 1;
   }
 
+  // Khi đứng yên chỉ vẽ ~30fps (sao nhấp nháy rất chậm, mắt không phân biệt được) → các lớp
+  // backdrop-filter phía trên (nav, form…) đỡ phải tính lại mỗi khung. Khi cuộn: vẽ mỗi khung cho parallax mượt.
+  let lastY = -1, lastT = 0;
   function loop(t) {
     raf = requestAnimationFrame(loop);
     frame++;
-    if (low && frame % 2) return; // máy yếu: ~30fps
+    if (document.documentElement.classList.contains('is-modal')) return; // có hộp thoại phủ kín → nền không cần vẽ
+    const moved = window.scrollY !== lastY || shoot;
+    if (!moved && t - lastT < (low ? 66 : 33)) return;
+    if (low && moved && frame % 2) return; // máy yếu: tối đa ~30fps
+    lastY = window.scrollY; lastT = t;
     draw(t);
   }
   function start() { if (running || reduced) return; running = true; nextShoot = performance.now() + 4000; raf = requestAnimationFrame(loop); }

@@ -40,6 +40,7 @@ export function initGallery(items, scroll) {
     box.append(h('div', { class: 'lightbox__bar' }, countEl, close), stage, capEl);
     document.body.append(box);
     document.documentElement.style.overflow = 'hidden';
+    document.documentElement.classList.add('is-modal');
     scroll?.stop();
     close.addEventListener('click', shut);
     prev.addEventListener('click', () => show(index - 1, -1));
@@ -71,6 +72,7 @@ export function initGallery(items, scroll) {
     b.classList.remove('is-open');
     setTimeout(() => b.remove(), env.reducedMotion ? 0 : 400);
     document.documentElement.style.overflow = '';
+    document.documentElement.classList.remove('is-modal');
     scroll?.start();
     release?.();
   }

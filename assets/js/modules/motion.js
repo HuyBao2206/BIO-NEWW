@@ -60,7 +60,7 @@ export function initScrollMotion({ gsap, ScrollTrigger, SplitText }) {
     if (!els.length) return;
     // fromTo (không dùng from) để trạng thái cuối luôn là hiện rõ, kể cả khi phần tử bị ẩn tạm lúc khởi tạo
     gsap.fromTo(els, { autoAlpha: 0, y: reduced ? 0 : 36 }, {
-      autoAlpha: 1, y: 0, duration: reduced ? 0.6 : 1, ease: reduced ? 'power1.out' : EASE, stagger: 0.08, ...opts,
+      autoAlpha: 1, y: 0, duration: reduced ? 0.6 : 1, ease: reduced ? 'power1.out' : EASE, stagger: 0.08, clearProps: 'transform', ...opts,
       scrollTrigger: { trigger: trigger || els[0], start: 'top 86%', once: true },
     });
   };
@@ -77,6 +77,8 @@ export function initScrollMotion({ gsap, ScrollTrigger, SplitText }) {
 
   fadeUp('#tot-game', '#tot-game');
   fadeUp('#oracle', '#oracle');
+  fadeUp('.lib__filters', '#library');
+  fadeUp('.lib__stage', '#library', { delay: 0.1 });
 
   if (reduced) {
     // Màn chuyển chương: chỉ fade nhẹ

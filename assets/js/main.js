@@ -10,6 +10,7 @@ import { initGallery } from './modules/gallery.js';
 import { initFavorites } from './modules/favorites.js';
 import { initThisOrThat } from './modules/this-or-that.js';
 import { initOracle } from './modules/oracle.js';
+import { initLibrary } from './modules/library.js';
 import { initFaq, copyPhone } from './modules/services.js';
 import { initGuestbook } from './modules/guestbook.js';
 import { createPlayer } from './modules/music-player.js';
@@ -24,9 +25,10 @@ const libs = {
   ScrollTrigger: window.ScrollTrigger,
   SplitText: window.SplitText,
   Lenis: window.Lenis,
+  Flip: window.Flip,
 };
 if (libs.gsap) {
-  const plugins = [libs.ScrollTrigger, libs.SplitText].filter(Boolean);
+  const plugins = [libs.ScrollTrigger, libs.SplitText, libs.Flip].filter(Boolean);
   if (plugins.length) libs.gsap.registerPlugin(...plugins);
   document.documentElement.classList.add('has-gsap');
 }
@@ -42,6 +44,7 @@ safe('oracle', () => initOracle(CONFIG));
 const scroll = safe('scroll', () => initScroll(libs)) || { scrollTo: (t) => (t === 0 ? scrollTo(0, 0) : t.scrollIntoView()), stop() {}, start() {} };
 safe('nav', () => initNav({ scrollTo: scroll.scrollTo, stopScroll: scroll.stop, startScroll: scroll.start }));
 safe('gallery', () => initGallery(CONFIG.gallery, scroll));
+safe('library', () => initLibrary(CONFIG, scroll));
 safe('guestbook', () => initGuestbook(CONFIG));
 const player = safe('player', () => createPlayer(CONFIG));
 safe('fx', () => { initMagnetic(); initTilt(); initCursor(); });

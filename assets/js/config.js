@@ -120,6 +120,58 @@ export const CONFIG = {
     imageDir: "assets/images/tarot/",    // có <id>.webp ở đây thì dùng ảnh, không thì dùng bản vẽ SVG
   },
 
+  // ——— HUB Knowledge Library — "Tủ sách giữa trời sao" ———
+  // Mỗi cuốn là một trang web HUB đang viết. Khi web lên sóng: điền url + đổi status thành "live".
+  // theme: "ban-than" | "vu-tru" | "ngon-ngu" | "tuong-lai" | "gia-tuong" | "bi-an"
+  // glyph (biểu tượng trên gáy & bìa): "spiral" | "saturn" | "speech" | "signal" | "portal" | "keyhole"
+  // status: "live" (đã mở cửa) | "writing" (đang viết, dùng progress 0–100) | "soon" (sắp ra mắt)
+  library: {
+    books: [
+      {
+        id: "understand-yourself", titleVi: "Thấu Hiểu & Phát Triển Bản Thân", titleEn: "Understand Yourself",
+        tagline: "Đọc lại chính mình qua thần số học, cung hoàng đạo và các bài trắc nghiệm tính cách, rồi nối chúng với lựa chọn nghề nghiệp thực tế.",
+        theme: "ban-than", color: "#A8553F", glyph: "spiral",
+        status: "writing", progress: 30, url: "", // TODO: điền link khi web lên sóng
+        chapters: ["Thần số học", "Cung hoàng đạo & Con giáp", "Bản đồ tính cách", "Sở thích nghề nghiệp", "Nghề nghiệp hôm nay & ngày mai", "Kỹ năng nên đầu tư"],
+      },
+      {
+        id: "into-the-cosmos", titleVi: "Không Gian & Vũ Trụ", titleEn: "Into the Cosmos",
+        tagline: "Từ tám hành tinh quanh Mặt Trời đến những thiên hà xa nhất mà kính thiên văn từng chụp được.",
+        theme: "vu-tru", color: "#2E3F82", glyph: "saturn",
+        status: "soon", progress: 0, url: "", // TODO
+        chapters: ["Hệ Mặt Trời", "Vòng đời một ngôi sao", "Hố đen", "Thiên hà & khoảng cách vũ trụ", "Con người chinh phục không gian", "Ngắm sao từ Việt Nam"],
+      },
+      {
+        id: "language-foundations", titleVi: "Nền Tảng Cho Người Học Ngoại Ngữ", titleEn: "Language Foundations",
+        tagline: "Những nguyên tắc chung giúp học ngoại ngữ nào cũng nhanh hơn, kèm lộ trình riêng cho tiếng Anh, Pháp, Trung và Hàn.",
+        theme: "ngon-ngu", color: "#2D6A64", glyph: "speech",
+        status: "soon", progress: 0, url: "", // TODO
+        chapters: ["Cách não học ngôn ngữ", "Phát âm & IPA", "Ngữ pháp cốt lõi", "Từ vựng & lặp lại ngắt quãng", "Lộ trình English · Français · 中文 · 한국어", "Nguồn học miễn phí"],
+      },
+      {
+        id: "future-signals", titleVi: "Tín Hiệu Tương Lai", titleEn: "Future Signals",
+        tagline: "Những công nghệ đang thay đổi cách chúng ta làm việc, chữa bệnh và tạo ra năng lượng.",
+        theme: "tuong-lai", color: "#5E4A96", glyph: "signal",
+        status: "soon", progress: 0, url: "", // TODO
+        chapters: ["AI & việc làm", "Robot & tự động hoá", "Năng lượng mới", "Y học tương lai", "Những nghề sẽ xuất hiện"],
+      },
+      {
+        id: "fiction-meets-science", titleVi: "Khoa Học Trong Thế Giới Giả Tưởng", titleEn: "Fiction Meets Science",
+        tagline: "Đặt những ý tưởng quen thuộc trong phim khoa học viễn tưởng cạnh những gì khoa học hiện nay thật sự biết.",
+        theme: "gia-tuong", color: "#86385A", glyph: "portal",
+        status: "soon", progress: 0, url: "", // TODO
+        chapters: ["Du hành thời gian", "Đa vũ trụ", "Đại dịch zombie: khoa học nói gì", "Sự sống ngoài Trái Đất", "AI trong phim và ngoài đời"],
+      },
+      {
+        id: "unsolved-mysteries", titleVi: "Bí Ẩn Chưa Có Lời Giải", titleEn: "Unsolved Mysteries",
+        tagline: "Những câu hỏi về lịch sử, khoa học, đại dương và không gian mà đến nay vẫn chưa có câu trả lời trọn vẹn.",
+        theme: "bi-an", color: "#36473C", glyph: "keyhole",
+        status: "soon", progress: 0, url: "", // TODO
+        chapters: ["Bí ẩn lịch sử", "Bí ẩn khoa học", "Bí ẩn đại dương", "Bí ẩn không gian"],
+      },
+    ],
+  },
+
   services: {
     dragonBoat: {
       title: "Thuyền Rồng Sông Hương",

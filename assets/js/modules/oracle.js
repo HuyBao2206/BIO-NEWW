@@ -110,6 +110,7 @@ export function initOracle(cfg) {
 
   function shuffle() {
     const cards = $$('.deck-card', deck);
+    cards.forEach((c) => { c.style.willChange = 'transform'; });
     return Promise.all(cards.map((c, i) => {
       const dir = i % 2 ? 1 : -1, dx = 48 + (i % 3) * 14;
       return anim(c, [
@@ -119,7 +120,7 @@ export function initOracle(cfg) {
         { transform: `translate(${dir * 12}px, -2px) rotate(${dir * 2}deg)`, offset: 0.8 },
         { transform: restOf(i) },
       ], { duration: 1200, delay: i * 30, easing: 'cubic-bezier(0.65, 0, 0.35, 1)' });
-    }));
+    })).then(() => cards.forEach((c) => { c.style.willChange = ''; }));
   }
 
   function burst() {

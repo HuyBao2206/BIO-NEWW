@@ -108,6 +108,35 @@ Quy ước `id`:
 
 Có thể thay từng lá một; lá nào chưa có ảnh thì vẫn dùng bản vẽ SVG. Riêng lá chưa có ảnh, khi được rút trúng, DevTools sẽ báo một dòng 404. Đây là bình thường.
 
+## 9. HUB Knowledge Library (tủ sách)
+
+Mỗi cuốn sách là một trang web riêng HUB đang viết. Toàn bộ dữ liệu nằm trong `CONFIG.library.books` (`assets/js/config.js`). Dòng thống kê ("6 cuốn · 0 đã mở cửa · 1 đang viết") được tính tự động từ đây.
+
+**Thêm một cuốn mới:** copy một khối `{ ... }` trong `books`, rồi sửa các trường:
+
+| Trường | Ý nghĩa |
+|---|---|
+| `id` | tên ngắn không dấu, không trùng, vd `"into-the-cosmos"` |
+| `titleVi` / `titleEn` | tên tiếng Việt / tiếng Anh |
+| `tagline` | 1 câu giới thiệu, hiện ở trang mục lục |
+| `theme` | `"ban-than"` · `"vu-tru"` · `"ngon-ngu"` · `"tuong-lai"` · `"gia-tuong"` · `"bi-an"` (dùng cho chip lọc) |
+| `color` | màu gáy & bìa, vd `"#2E3F82"` |
+| `glyph` | biểu tượng: `"spiral"` · `"saturn"` · `"speech"` · `"signal"` · `"portal"` · `"keyhole"` |
+| `status` | `"soon"` (Sắp ra mắt) · `"writing"` (HUB đang viết) · `"live"` (Đã mở cửa) |
+| `progress` | tiến độ 0–100, chỉ hiện khi `status: "writing"` |
+| `url` | link trang web của cuốn sách |
+| `chapters` | 4–6 tên chương |
+
+**Đổi trạng thái:**
+- Bắt đầu viết: `status: "writing"`, rồi cập nhật dần `progress` (vd `30` → `60` → `90`).
+- **Khi web lên sóng:** điền `url: "https://..."` (phải bắt đầu bằng `https://`) và đổi `status: "live"`. Bìa sẽ phát sáng và nút "Mở cửa vào thư viện →" bật lên. Bấm nút thì web mở ở **tab mới**, nên khách không rời khỏi bio và nhạc nền vẫn chạy.
+- Nếu để `status: "live"` mà chưa có `url` thì nút vẫn bị khoá, kèm dòng "Đường dẫn đang được cập nhật".
+
+**Hiển thị:**
+- Máy tính: kệ sách 3D, có vệt sáng và bụi sáng.
+- Điện thoại: carousel bìa sách, vuốt ngang để xem.
+- Máy bật "giảm chuyển động": lưới bìa sách, không có hiệu ứng 3D.
+
 ## ✅ Danh sách TODO cho chủ site
 
 | # | Việc cần làm | Ở đâu |
@@ -129,6 +158,7 @@ Có thể thay từng lá một; lá nào chưa có ảnh thì vẫn dùng bản
 | 15 | (Tuỳ chọn) Bật workflow keepalive Supabase | repository secrets — xem SETUP-GUESTBOOK.md |
 | 16 | (Tuỳ chọn) Sửa các câu chốt theo mức điểm của This or That | `CONFIG.thisOrThat.endings` |
 | 17 | (Tuỳ chọn) Thay mặt bài tarot bằng ảnh Rider–Waite–Smith 1909 | `assets/images/tarot/<id>.webp` — xem mục 8 |
+| 18 | Thư viện: điền `url` + đổi `status: "live"` khi từng web sách lên sóng; cập nhật `progress` | `CONFIG.library.books` — xem mục 9 |
 
 ---
 
@@ -144,7 +174,7 @@ assets/
     main.js           ← ghép các module
     modules/          render, preloader, nav, sky, hero, motion, gallery, favorites,
                       services, guestbook(-service), music-player, fx, toast, icons, utils,
-                      this-or-that, oracle, tarot-art
+                      this-or-that, oracle, tarot-art, library
   images/  music/  icons/
 supabase/schema.sql
 .github/workflows/supabase-keepalive.yml
