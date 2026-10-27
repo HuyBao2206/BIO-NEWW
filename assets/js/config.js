@@ -176,13 +176,13 @@ export const CONFIG = {
   services: {
     dragonBoat: {
       title: "Thuyền Rồng Sông Hương",
-      tagline: "Một chiều thong thả trên dòng Hương — nghe gió, ngắm đèn lồng và để lòng mình chậm lại một chút.",
+      tagline: "Một chiều thong thả trên dòng Hương — hóng gió, ngắm cảnh và chill theo sự thơ mộng của sứ Huế.",
       // Mở rộng từ danh sách chữ thành { title, desc, icon }. icon: "cruise" | "dinner" | "party" | "cahue"
       items: [
         { title: "Dạo chơi trên sông Hương", icon: "cruise",
           desc: "Thả mình trôi theo dòng Hương êm đềm, ngắm hai bờ xanh mướt và hoàng hôn xứ Huế dịu dàng." },
         { title: "Ăn tối trên thuyền", icon: "dinner",
-          desc: "Một bữa tối ấm cúng bồng bềnh trên sông, có gió mát, có ánh đèn lồng và người thương ngồi cạnh." },
+          desc: "Một bữa tối ấm cúng bồng bềnh trên sông, có gió mát, cảnh đẹp và tuyệt vời hơn khi có cả người thân, người thương ngồi cạnh." },
         { title: "Tổ chức tiệc gia đình / hội nhóm", icon: "party",
           desc: "Sinh nhật, họp lớp hay tiệc công ty — cùng nhau tạo nên một kỷ niệm thật khác giữa lòng sông Hương." },
         { title: "Nghe ca Huế trên sông Hương", icon: "cahue",
@@ -190,13 +190,13 @@ export const CONFIG = {
       ],
       // Thông tin thêm — "..." sẽ hiện "Đang cập nhật". Không bịa số liệu.
       details: [
-        { label: "Giá tham khảo", value: "..." }, // TODO
-        { label: "Giờ hoạt động", value: "..." }, // TODO
-        { label: "Sức chứa",      value: "..." }, // TODO
+        { label: "Giá tham khảo", value: "chỉ từ 100k/người" }, // TODO
+        { label: "Ngày hoạt động", value: "Mọi ngày trong tuần" }, // TODO
+        { label: "Sức chứa",      value: "1-35" }, // TODO
       ],
-      contactName: "...", // TODO
-      phone: "...",       // TODO
-      zalo: "...",        // TODO (thường trùng SĐT)
+      contactName: "Lê Thị Na", // TODO
+      phone: "0796575233",       // TODO
+      zalo: "0796575233",        // TODO (thường trùng SĐT)
       // Ảnh thuyền thật (tuỳ chọn): { src: "assets/images/services/dragon-boat/01.webp", alt: "..." }
       photos: [],
     },
@@ -234,9 +234,9 @@ export const CONFIG = {
         { q: "Có kiểm hàng trước khi giao không?", a: "..." }, // TODO
         { q: "Hàng lỗi/sai mẫu xử lý ra sao?", a: "..." },     // TODO
       ],
-      contactName: "...", // TODO
-      phone: "...",       // TODO
-      zalo: "...",        // TODO
+      contactName: "Gem Order China", // TODO
+      Fb: "https://www.facebook.com/profile.php?id=61586235605885",       // TODO
+      Tiktok: "https://www.tiktok.com/@g.e.e.m.order.china?_r=1&_t=ZS-9AuZP810M7w",        // TODO
     },
   },
 
