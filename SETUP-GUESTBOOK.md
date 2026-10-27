@@ -26,7 +26,7 @@ File sẽ tạo:
 
 1. Menu trái → **Project Settings** → **API** (hoặc **Data API / API Keys**).
 2. Copy:
-   - **Project URL**, dạng `https://abcdxyz.supabase.co`
+   - **Project URL**, dạng `https://abcdxyz.supabase.co` (chỉ tới `.supabase.co`, **không** kèm `/rest/v1/`)
    - **anon public** key (hoặc **Publishable key** `sb_publishable_…`)
 3. Mở `assets/js/config.js`, điền:
    ```js

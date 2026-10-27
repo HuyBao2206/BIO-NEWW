@@ -248,8 +248,8 @@ export const CONFIG = {
   },
 
   guestbook: {
-    supabaseUrl: "https://ltqkhzokqvdhsehkadcm.supabase.co/rest/v1/",  // TODO: dán Project URL (xem SETUP-GUESTBOOK.md). Để trống = chế độ demo.
-    supabaseKey: "sb_publishable_4CE0UFmZ5w3eNbY6dG8CWQ_FU4dIUWL",  // TODO: dán anon/publishable key (KHÔNG dùng service_role)
+    supabaseUrl: "https://ltqkhzokqvdhsehkadcm.supabase.co",  // Project URL (chỉ tới .supabase.co, KHÔNG kèm /rest/v1). Để trống = chế độ demo.
+    supabaseKey: "sb_publishable_4CE0UFmZ5w3eNbY6dG8CWQ_FU4dIUWL",  // anon/publishable key (KHÔNG dùng service_role)
     pageSize: 12,
     minName: 2,
     maxName: 40,

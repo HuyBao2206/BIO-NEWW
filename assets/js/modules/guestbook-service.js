@@ -7,9 +7,13 @@ const SUPABASE_CDN = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0
 const TABLE = 'guestbook_entries';
 const COLUMNS = 'id, created_at, name, message, mood, is_pinned';
 
+/* Chấp nhận cả khi lỡ dán kèm "/rest/v1/" hay dấu "/" cuối — supabase-js tự thêm phần đó */
+const normalizeUrl = (u) => String(u || '').trim().replace(/\/+$/, '').replace(/\/rest\/v1$/i, '').replace(/\/+$/, '');
+
 export function createGuestbookService(cfg) {
-  const ready = cfg.supabaseUrl && cfg.supabaseKey && /^https:\/\//.test(cfg.supabaseUrl);
-  return ready ? supabaseService(cfg) : demoService(cfg);
+  const url = normalizeUrl(cfg.supabaseUrl);
+  const ready = url && cfg.supabaseKey && /^https:\/\//.test(url);
+  return ready ? supabaseService({ ...cfg, supabaseUrl: url }) : demoService(cfg);
 }
 
 /* ———————————————— Supabase ———————————————— */
@@ -23,7 +27,12 @@ function loadScript(src) {
 }
 
 function friendlyError(err) {
+  // Ghi lỗi gốc ra Console (F12) để dễ tìm nguyên nhân; khách chỉ thấy câu thân thiện
+  console.warn('[Sổ lưu bút] Supabase lỗi:', err);
   const msg = String(err?.message || err || '');
+  if (/PGRST205|Could not find the table|relation .* does not exist/i.test(msg)) return 'Sổ lưu bút chưa được cài đặt xong (thiếu bảng dữ liệu).';
+  if (/Invalid API key|JWT|apikey|No API key/i.test(msg)) return 'Khoá kết nối sổ lưu bút chưa đúng.';
+  if (/permission denied|row-level security/i.test(msg)) return 'Sổ lưu bút chưa được cấp quyền đúng.';
   if (/flood|too many/i.test(msg)) return 'Sổ lưu bút đang hơi đông, bạn thử lại sau ít phút nhé.';
   if (/check constraint|violates/i.test(msg)) return 'Nội dung chưa hợp lệ, bạn kiểm tra lại giúp mình nhé.';
   if (/fetch|network|Failed|timeout/i.test(msg)) return 'Mất kết nối mạng, bạn thử lại nhé.';
