@@ -112,8 +112,8 @@
         <li><a href="#yeu-thich" data-nav="yeu-thich">Yêu thích</a></li>
         <li><a href="#tin-hieu" data-nav="tin-hieu">Tín hiệu</a></li>
         <li><a href="#thu-vien" data-nav="thu-vien">Thư viện</a></li>
-        <li><a href="#chuong-2" data-nav="dich-vu">Dịch vụ</a></li>
         <li><a href="#luu-but" data-nav="luu-but">Lưu bút</a></li>
+        <li><a href="#chuong-2" data-nav="dich-vu">Dịch vụ</a></li>
       </ul>
     </nav>
     <button class="menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="menu-overlay">
@@ -128,8 +128,8 @@
         <li><a href="#yeu-thich"><small>02</small>Yêu thích</a></li>
         <li><a href="#tin-hieu"><small>03</small>Tín hiệu</a></li>
         <li><a href="#thu-vien"><small>04</small>Thư viện</a></li>
-        <li><a href="#chuong-2"><small>05</small>Dịch vụ</a></li>
-        <li><a href="#luu-but"><small>06</small>Lưu bút</a></li>
+        <li><a href="#luu-but"><small>05</small>Lưu bút</a></li>
+        <li><a href="#chuong-2"><small>06</small>Dịch vụ</a></li>
       </ol>
     </nav>
     <p class="menu-overlay__foot">Bảo Huy · HUB · <span class="font-script">moonlit journey</span></p>
@@ -256,6 +256,54 @@
       </div>
     </section>
 
+    <!-- ============ GUESTBOOK ============ -->
+    <section class="guestbook section" id="luu-but" data-nav="luu-but" aria-labelledby="gb-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Sổ lưu bút</p>
+          <h2 class="section-title" id="gb-title">Sổ lưu bút — <em>dấu chân những người ghé qua</em></h2>
+        </header>
+        <div class="gb">
+          <form class="gb-form glass" id="gb-form" novalidate>
+            <p class="gb-demo" id="gb-demo" hidden>Chế độ demo — lời nhắn chỉ lưu trên trình duyệt này.</p>
+            <div class="field">
+              <label for="gb-name">Tên của bạn</label>
+              <input id="gb-name" name="name" type="text" autocomplete="nickname" required aria-describedby="gb-name-err">
+              <p class="field__err" id="gb-name-err" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="gb-msg">Lời nhắn</label>
+              <textarea id="gb-msg" name="message" rows="4" required aria-describedby="gb-msg-err gb-msg-count"></textarea>
+              <div class="field__row">
+                <p class="field__err" id="gb-msg-err" aria-live="polite"></p>
+                <p class="field__count" id="gb-msg-count">0 / 500</p>
+              </div>
+            </div>
+            <fieldset class="field moods">
+              <legend>Chọn một sticker <small>(tuỳ chọn)</small></legend>
+              <div class="moods__list" id="gb-moods"></div>
+            </fieldset>
+            <div class="hp" aria-hidden="true">
+              <label for="gb-website">Website</label>
+              <input id="gb-website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="gb-form__foot">
+              <button class="btn btn--gold gb-submit" type="submit" id="gb-submit" data-magnetic>
+                <span class="gb-submit__label">Gửi lời nhắn</span>
+                <svg class="gb-plane" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 11.2 21 3.5l-4.6 17-5.2-6.1-5.4 3.2 1.6-6.1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m7.4 11.5 13.6-8" stroke="currentColor" stroke-width="1.6"/></svg>
+              </button>
+              <p class="gb-status" id="gb-status" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+          <div class="gb-board">
+            <p class="gb-total" id="gb-total" aria-live="polite"></p>
+            <ul class="gb-list" id="gb-list" aria-live="polite" aria-busy="true"></ul>
+            <div class="gb-more"><button class="btn btn--ghost" type="button" id="gb-more" hidden>Xem thêm</button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ CHƯƠNG 2 — chuyển cảnh ============ -->
     <section class="chapter" id="chuong-2" data-nav="dich-vu" aria-labelledby="chapter-text">
       <div class="chapter__sticky">
@@ -326,53 +374,6 @@
       </div>
     </section>
 
-    <!-- ============ GUESTBOOK ============ -->
-    <section class="guestbook section" id="luu-but" data-nav="luu-but" aria-labelledby="gb-title">
-      <div class="container">
-        <header class="section-head">
-          <p class="eyebrow">Sổ lưu bút</p>
-          <h2 class="section-title" id="gb-title">Sổ lưu bút — <em>dấu chân những người ghé qua</em></h2>
-        </header>
-        <div class="gb">
-          <form class="gb-form glass" id="gb-form" novalidate>
-            <p class="gb-demo" id="gb-demo" hidden>Chế độ demo — lời nhắn chỉ lưu trên trình duyệt này.</p>
-            <div class="field">
-              <label for="gb-name">Tên của bạn</label>
-              <input id="gb-name" name="name" type="text" autocomplete="nickname" required aria-describedby="gb-name-err">
-              <p class="field__err" id="gb-name-err" aria-live="polite"></p>
-            </div>
-            <div class="field">
-              <label for="gb-msg">Lời nhắn</label>
-              <textarea id="gb-msg" name="message" rows="4" required aria-describedby="gb-msg-err gb-msg-count"></textarea>
-              <div class="field__row">
-                <p class="field__err" id="gb-msg-err" aria-live="polite"></p>
-                <p class="field__count" id="gb-msg-count">0 / 500</p>
-              </div>
-            </div>
-            <fieldset class="field moods">
-              <legend>Chọn một sticker <small>(tuỳ chọn)</small></legend>
-              <div class="moods__list" id="gb-moods"></div>
-            </fieldset>
-            <div class="hp" aria-hidden="true">
-              <label for="gb-website">Website</label>
-              <input id="gb-website" name="website" type="text" tabindex="-1" autocomplete="off">
-            </div>
-            <div class="gb-form__foot">
-              <button class="btn btn--gold gb-submit" type="submit" id="gb-submit" data-magnetic>
-                <span class="gb-submit__label">Gửi lời nhắn</span>
-                <svg class="gb-plane" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 11.2 21 3.5l-4.6 17-5.2-6.1-5.4 3.2 1.6-6.1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m7.4 11.5 13.6-8" stroke="currentColor" stroke-width="1.6"/></svg>
-              </button>
-              <p class="gb-status" id="gb-status" role="status" aria-live="polite"></p>
-            </div>
-          </form>
-          <div class="gb-board">
-            <p class="gb-total" id="gb-total" aria-live="polite"></p>
-            <ul class="gb-list" id="gb-list" aria-live="polite" aria-busy="true"></ul>
-            <div class="gb-more"><button class="btn btn--ghost" type="button" id="gb-more" hidden>Xem thêm</button></div>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <!-- ============ FOOTER ============ -->

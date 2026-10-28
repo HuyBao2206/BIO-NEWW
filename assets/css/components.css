@@ -134,10 +134,15 @@ html:not(.js) .tabs { display: none; }
 .contact-card__phone { font-family: var(--font-display); font-size: var(--fs-xl); letter-spacing: .03em; font-variant-numeric: tabular-nums; }
 .contact-card__phone.is-pending { color: var(--silver-dim); font-style: italic; font-size: var(--fs-lg); }
 .contact-card__actions { display: flex; flex-wrap: wrap; gap: .7rem; }
-.contact-card__details { display: grid; gap: .5rem; padding: 1rem 1.15rem; border-radius: var(--r-md); background: rgba(8, 12, 25, .35); border: 1px dashed var(--glass-line-strong); font-size: var(--fs-sm); }
-.contact-card__details div { display: flex; justify-content: space-between; gap: 1rem; }
-.contact-card__details dt { color: var(--silver); }
-.contact-card__details dd { margin: 0; text-align: right; }
+.contact-card__details { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: .6rem; margin: .25rem 0 0; }
+.contact-card__details div { display: grid; gap: .2rem; align-content: start; padding: .75rem .9rem; border-radius: var(--r-md); background: rgba(8, 12, 25, .35); border: 1px solid var(--glass-line); }
+.contact-card__details dt { color: var(--silver); font-size: var(--fs-xs); letter-spacing: .06em; }
+.contact-card__details dd { margin: 0; font-size: var(--fs-sm); font-weight: 600; line-height: 1.4; color: var(--pearl); }
+/* Liên hệ qua mạng xã hội */
+.contact-card__social { position: relative; z-index: 1; display: grid; gap: .5rem; }
+.contact-card__cta { font-family: var(--font-display); font-size: var(--fs-xl); line-height: 1.2; color: var(--pearl); }
+.contact-card__cta-sub { color: var(--silver); font-size: var(--fs-sm); margin-bottom: .5rem; }
+.contact-card__social .btn { flex: 1 1 150px; max-width: 240px; }
 .is-pending-text { color: var(--silver-dim); font-style: italic; }
 @media (min-width: 900px) { .contact-card { grid-template-columns: 1.1fr 1fr; align-items: center; } }
 

@@ -121,7 +121,7 @@ export const CONFIG = {
   },
 
   // ——— HUB Knowledge Library — "Tủ sách giữa trời sao" ———
-  // Mỗi cuốn là một trang web HUB đang viết. Khi web lên sóng: điền url + đổi status thành "live".
+  // Mỗi cuốn là một trang web HUB đang viết (4–7 chương). Khi web lên sóng: điền url + đổi status thành "live".
   // theme: "ban-than" | "vu-tru" | "ngon-ngu" | "tuong-lai" | "gia-tuong" | "bi-an"
   // glyph (biểu tượng trên gáy & bìa): "spiral" | "saturn" | "speech" | "signal" | "portal" | "keyhole"
   // status: "live" (đã mở cửa) | "writing" (đang viết, dùng progress 0–100) | "soon" (sắp ra mắt)
@@ -131,9 +131,8 @@ export const CONFIG = {
         id: "understand-yourself", titleVi: "Thấu Hiểu & Phát Triển Bản Thân", titleEn: "Understand Yourself",
         tagline: "Đọc lại chính mình qua thần số học, cung hoàng đạo và các bài trắc nghiệm tính cách, rồi nối chúng với lựa chọn nghề nghiệp thực tế.",
         theme: "ban-than", color: "#A8553F", glyph: "spiral",
-        status: "writing", progress: 50, url: "https://huybao2206.github.io/whoareyou/",
-        note: "Đã có phần mở đầu và một phần Thần số học — các chương khác HUB đang viết tiếp.", // ghi chú nhỏ (tuỳ chọn)
-        chapters: ["Thần số học", "Cung hoàng đạo & Con giáp", "Bản đồ tính cách", "Sở thích nghề nghiệp", "Nghề nghiệp hôm nay & ngày mai", "Kỹ năng nên đầu tư"],
+        status: "live", progress: 100, url: "https://huybao2206.github.io/whoareyou/",
+        chapters: ["Thần số học", "Cung hoàng đạo & Con giáp", "Bản đồ tính cách", "Sở thích nghề nghiệp", "Nghề nghiệp hôm nay & ngày mai", "Kỹ năng nên đầu tư", "Giá trị sống"],
       },
       {
         id: "into-the-cosmos", titleVi: "Không Gian & Vũ Trụ", titleEn: "Into the Cosmos",
@@ -190,13 +189,13 @@ export const CONFIG = {
       ],
       // Thông tin thêm — "..." sẽ hiện "Đang cập nhật". Không bịa số liệu.
       details: [
-        { label: "Giá tham khảo", value: "chỉ từ 100k/người" }, // TODO
-        { label: "Ngày hoạt động", value: "Mọi ngày trong tuần" }, // TODO
-        { label: "Sức chứa",      value: "1-35" }, // TODO
+        { label: "Giá tham khảo", value: "chỉ từ 100k/người" },
+        { label: "Ngày hoạt động", value: "Mọi ngày trong tuần" },
+        { label: "Sức chứa",      value: "1-35" },
       ],
-      contactName: "Lê Thị Na", // TODO
-      phone: "0796575233",       // TODO
-      zalo: "0796575233",        // TODO (thường trùng SĐT)
+      contactName: "Lê Thị Na",
+      phone: "0796575233",
+      zalo: "0796575233",
       // Ảnh thuyền thật (tuỳ chọn): { src: "assets/images/services/dragon-boat/01.webp", alt: "..." }
       photos: [],
     },
@@ -234,9 +233,11 @@ export const CONFIG = {
         { q: "Có kiểm hàng trước khi giao không?", a: "..." }, // TODO
         { q: "Hàng lỗi/sai mẫu xử lý ra sao?", a: "..." },     // TODO
       ],
-      contactName: "Gem Order China", // TODO
-      Fb: "https://www.facebook.com/profile.php?id=61586235605885",       // TODO
-      Tiktok: "https://www.tiktok.com/@g.e.e.m.order.china?_r=1&_t=ZS-9AuZP810M7w",        // TODO
+      contactName: "Gem Order China",
+      // Shop liên hệ qua mạng xã hội (không dùng số điện thoại / Zalo) → hiện nút "Liên hệ ngay" tới Facebook & TikTok.
+      // Nếu sau này có SĐT thì thêm phone: "...", zalo: "..." — trang sẽ tự đổi sang kiểu Gọi / Nhắn Zalo.
+      facebook: "https://www.facebook.com/profile.php?id=61586235605885",
+      tiktok: "https://www.tiktok.com/@g.e.e.m.order.china?_r=1&_t=ZS-9AuZP810M7w",
     },
   },
 

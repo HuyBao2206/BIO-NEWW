@@ -211,6 +211,24 @@ function contactCard(root, { title, hello, name, phone, zalo, details, primary, 
   root.replaceChildren(left, right);
 }
 
+/* Thẻ liên hệ qua mạng xã hội (khi shop không dùng số điện thoại / Zalo) */
+function socialContactCard(root, { title, hello, name, nameLabel = 'Liên hệ', links }) {
+  const valid = links.filter((l) => /^https?:\/\//.test(l.url || ''));
+  const left = h('div', {},
+    hello ? h('p', { class: 'contact-card__hello', text: hello }) : null,
+    h('h3', { text: title }),
+    h('p', { class: 'contact-card__person' }, nameLabel,
+      h('b', { class: isPending(name) ? 'is-pending-text' : '', text: isPending(name) ? 'Đang cập nhật' : name })));
+  const right = h('div', { class: 'contact-card__social' },
+    h('p', { class: 'contact-card__cta', text: 'Liên hệ ngay' }),
+    h('p', { class: 'contact-card__cta-sub', text: 'Nhắn tin cho shop để gửi link/ảnh sản phẩm và nhận báo giá nhé.' }),
+    h('div', { class: 'contact-card__actions' }, valid.length
+      ? valid.map((l, i) => h('a', { class: `btn ${i === 0 ? 'btn--order' : 'btn--ghost'} btn--lg`, href: l.url, target: '_blank', rel: 'noopener noreferrer', 'data-magnetic': '', 'aria-label': `${l.label} của ${name} (mở tab mới)` },
+        svg(ICONS[l.icon]), l.label))
+      : actionBtn({ icon: 'zalo', label: 'Liên hệ', pending: true })));
+  root.replaceChildren(left, right);
+}
+
 /* ———————————————————— Thuyền Rồng ———————————————————— */
 function waveD(y, amp, wl, width = 1600) {
   let d = `M0 ${y}`;
@@ -343,11 +361,19 @@ function renderOrder(cfg, ctx) {
       h('h4', {}, h('button', { class: 'faq__q', type: 'button', id: `${id}-q`, 'aria-expanded': 'false', 'aria-controls': `${id}-a` },
         h('span', { text: f.q }), h('span', { class: 'faq__icon', 'aria-hidden': 'true' }))),
       h('div', { class: 'faq__a', id: `${id}-a`, role: 'region', 'aria-labelledby': `${id}-q` },
-        h('div', {}, h('p', { class: isPending(f.a) ? 'is-pending-text' : '', text: isPending(f.a) ? 'Đang cập nhật — bạn nhắn Zalo để được tư vấn trực tiếp nhé.' : f.a }))));
+        h('div', {}, h('p', { class: isPending(f.a) ? 'is-pending-text' : '', text: isPending(f.a) ? 'Đang cập nhật — bạn nhắn tin cho shop để được tư vấn trực tiếp nhé.' : f.a }))));
   }));
-  contactCard($('#order-contact'), {
-    title: 'Bắt đầu một đơn hàng', name: o.contactName, phone: o.phone, zalo: o.zalo, primary: 'zalo', onCopy: ctx.copyPhone,
-  });
+  const social = [
+    { label: 'Facebook', icon: 'facebook', url: o.facebook || o.Fb },
+    { label: 'TikTok', icon: 'tiktok', url: o.tiktok || o.Tiktok },
+  ];
+  if (isPending(o.phone) && social.some((l) => /^https?:\/\//.test(l.url || ''))) {
+    socialContactCard($('#order-contact'), { title: 'Bắt đầu một đơn hàng', name: o.contactName, nameLabel: 'Shop', links: social });
+  } else {
+    contactCard($('#order-contact'), {
+      title: 'Bắt đầu một đơn hàng', name: o.contactName, phone: o.phone, zalo: o.zalo, primary: 'zalo', onCopy: ctx.copyPhone,
+    });
+  }
 }
 
 /* ———————————————————— Footer ———————————————————— */
