@@ -138,7 +138,7 @@ export const CONFIG = {
         id: "into-the-cosmos", titleVi: "Không Gian & Vũ Trụ", titleEn: "Into the Cosmos",
         tagline: "Từ tám hành tinh quanh Mặt Trời đến những thiên hà xa nhất mà kính thiên văn từng chụp được.",
         theme: "vu-tru", color: "#2E3F82", glyph: "saturn",
-        status: "soon", progress: 0, url: "", // TODO
+        status: "writing", progress: 50, url: "https://huybao2206.github.io/cosmos/",
         chapters: ["Hệ Mặt Trời", "Vòng đời một ngôi sao", "Hố đen", "Thiên hà & khoảng cách vũ trụ", "Con người chinh phục không gian", "Ngắm sao từ Việt Nam"],
       },
       {
